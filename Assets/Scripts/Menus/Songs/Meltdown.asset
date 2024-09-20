@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e8596d94c724f808610580eb7b2403, type: 3}
+  m_Name: Meltdown
+  m_EditorClassIdentifier: 
+  songIcon: {fileID: 21300000, guid: 9b3b07d668b144df39ce8f8ceff11fd1, type: 3}
+  songName: Meltdown
+  bandName: Kagamine Rin
+  levels:
+  - {fileID: 11400000, guid: c20772d8b899b42dbacf44788714d4f5, type: 2}
