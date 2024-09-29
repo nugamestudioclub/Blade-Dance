@@ -123,6 +123,10 @@ public class LevelRunner : MonoBehaviour
         ResetCounters();
     }
 
+
+
+    /**** BULLET FUNCTIONS *****/
+
     void SpawnRandomBullet()
     {
         int randDir = Random.Range(0, 4);
@@ -289,6 +293,10 @@ public class LevelRunner : MonoBehaviour
         GameObject nextSpawn = Instantiate(prefab, position, Quaternion.identity);
         nextSpawn.GetComponent<IMover>().SetProperties(direction, noteSpeed, bounds);
     }
+
+
+
+    /**** POINTS FUNCTIONS *****/
 
     public static void AddHit(int points)
     {
