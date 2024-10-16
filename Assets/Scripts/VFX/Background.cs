@@ -25,7 +25,7 @@ public class Background : MonoBehaviour
 
     // plays video at the specified framerate. If another video is playing before, it will stop that video and play this video
     // optional boolean to sync it to frames per beat (byBeat = true) or frames per second (byBeat = false)
-    public void PlayVideo(string filename, float playbackSpeed = 1)
+    public void PlayVideo(string filename, float duration, float playbackSpeed = 1)
     {
         videoPlayer.targetCameraAlpha = 0.5F;
 
