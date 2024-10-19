@@ -11,7 +11,7 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        StartCoroutine(Shake(0.3f, 0.05f, 2.5f));
+        StartCoroutine(Shake(0.5f, 0.05f, 0.5f));
     }
 
     // Update is called once per frame
@@ -34,8 +34,7 @@ public class CameraMover : MonoBehaviour
 
             mainCamera.transform.position = initialPosition + randomDelta;
             yield return new WaitForSeconds(shakeRate);
-
-            Debug.Log(timer);
+            // Debug.Log(timer);
 
             timer = Time.time - initialTime;
         }

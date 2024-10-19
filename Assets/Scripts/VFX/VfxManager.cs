@@ -10,30 +10,33 @@ using UnityEngine;
 public class VfxManager : MonoBehaviour
 {
 
-    private Queue<EffectCommand> commandQueue;
-
-    // Start is called before the first frame update
     void Start()
     {
-        commandQueue = new Queue<EffectCommand>();
-
-        ParseEffectLine("BG bad-apple 3 1");
-        ParseEffectLine("BG bad-apple 3 2");
-        PlayAllEffects();
+        //PlayEffect("BG VIDEO bad-apple 3 1");
+        //PlayEffect("BG COLOR 220 20 60");
+        StartCoroutine(TestWait());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator TestWait()
     {
-        
+        yield return new WaitForSeconds(2);
+        PlayEffect("BG COLOR 260 20 2");
+        //PlayEffect("BG VIDEO bad-apple 1 5");
+
     }
 
-    //code to handle an effect, denoted as a string in the following format:
+    void PlayEffect(string effectString)
+    {
+        EffectCommand command = EffectStringToCommand(effectString);
+        command.Execute();
+    }
+
+    //  Converts an effect string into an EffectCommand object, denoted as a string in the following format:
     //  TYPE param1 param2 param3
-    void ParseEffectLine(string line)
+    EffectCommand EffectStringToCommand(string effectString)
     {
         //parses the string for tokens, splits into effect type and its parameters
-        List<string> tokens = new List<string>(line.Split(' '));
+        List<string> tokens = new List<string>(effectString.Split(' '));
         string effectType = "";
 
         if (tokens.Count == 0) {
@@ -50,27 +53,24 @@ public class VfxManager : MonoBehaviour
 
         if (effectType == "BG")
         {
-            command = new BackgroundEffectCommand(tokens[0], float.Parse(tokens[1]), float.Parse(tokens[2]));
+            //BackgroundEffectCommand takes (string filename, float duration, float playbackSpeed)
+            if (tokens[0] == "VIDEO")
+            {
+                command = new BackgroundEffectCommand(tokens[1], float.Parse(tokens[2]), float.Parse(tokens[3]));
+            }
+            else if (tokens[0] == "COLOR")
+            {
+                command = new BackgroundEffectCommand(int.Parse(tokens[1]), int.Parse(tokens[2]), int.Parse(tokens[3]));
+            } else
+            {
+                Debug.Log("Could not find BG effect type");
+            }
         } else
         {
             Debug.Log("Could not find effect type: " + effectType);
         }
 
-        //adds the EffectCommand to the command queue
-        commandQueue.Enqueue(command);
+        return command;
     }
-
-
-    //for testing purposes only - empties the entire command queue and plays all effects
-    //TODO: Play effects at a given beat division or at a certain time
-    void PlayAllEffects()
-    {
-        while (commandQueue.Count > 0)
-        {
-            EffectCommand command = commandQueue.Dequeue();
-            command.Execute();
-        }
-    }
-
     
 }
