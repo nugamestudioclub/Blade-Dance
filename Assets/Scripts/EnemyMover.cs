@@ -6,6 +6,7 @@ public class EnemyMover : MonoBehaviour, IMover
 {
     public AudioClip hitSFX;
     public AudioClip missSFX;
+    private LevelRunner levelRunner;
 
     private Vector3 direction;
     private float speed;
@@ -17,7 +18,7 @@ public class EnemyMover : MonoBehaviour, IMover
     // Start is called before the first frame update
     void Start()
     {
-
+        levelRunner = GameObject.FindGameObjectWithTag("LevelRunner").GetComponent<LevelRunner>();
     }
 
     // Update is called once per frame
@@ -72,14 +73,14 @@ public class EnemyMover : MonoBehaviour, IMover
     public void CenterHit()
     {
         AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
-        LevelRunner.AddMiss();
+        levelRunner.AddMiss();
         Destroy(gameObject);
     }
 
     public void HitPlayer(int accuracy)
     {
         AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
-        LevelRunner.AddHit(accuracy);
+        levelRunner.AddHit(accuracy);
         Destroy(gameObject);
     }
 }
