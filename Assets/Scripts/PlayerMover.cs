@@ -6,6 +6,8 @@ public class PlayerMover : MonoBehaviour
 {
     public float moveSpeed;
 
+    private Animator animator;
+
     private Vector3 origin;
     private Vector3 lastFrameInput;
 
@@ -14,6 +16,7 @@ public class PlayerMover : MonoBehaviour
     {
         origin = transform.position;
         lastFrameInput = Vector3.zero;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -73,5 +76,26 @@ public class PlayerMover : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, origin + targetInput, moveSpeed * Time.deltaTime);
 
         lastFrameInput = targetInput;
+
+        if (targetInput == Vector3.up)
+        {
+            animator.SetInteger("PlayerState", 1);
+        }
+        else if (targetInput == Vector3.down)
+        {
+            animator.SetInteger("PlayerState", 2);
+        }
+        else if (targetInput == Vector3.left)
+        {
+            animator.SetInteger("PlayerState", 3);
+        }
+        else if (targetInput == Vector3.right)
+        {
+            animator.SetInteger("PlayerState", 4);
+        }
+        else
+        {
+            animator.SetInteger("PlayerState", 0);
+        }
     }
 }
