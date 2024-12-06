@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelRunner : MonoBehaviour
 {
-    private static int hits;
-    private static int misses;
+    private int hits = 0;
+    private int misses = 0;
 
-    public static TMP_Text hitLabel;
-    public static TMP_Text missLabel;
+    public TMP_Text hitLabel;
+    public TMP_Text missLabel;
 
     public TMP_Text hitLabelHolder;
     public TMP_Text missLabelHolder;
@@ -120,7 +120,6 @@ public class LevelRunner : MonoBehaviour
         musicSource.Stop();
         endScreen.SetActive(true);
         endScreen.GetComponent<LevelEnder>().Populate(hits, hits + misses);
-        ResetCounters();
     }
 
     void SpawnRandomBullet()
@@ -290,27 +289,20 @@ public class LevelRunner : MonoBehaviour
         nextSpawn.GetComponent<IMover>().SetProperties(direction, noteSpeed, bounds);
     }
 
-    public static void AddHit(int points)
+    public void AddHit(int points)
     {
-        // TODO point system?
         hits += 1;
         hitLabel.SetText("Hits: " + hits);
     }
 
-    public static void AddHit()
+    public void AddHit()
     {
         AddHit(1);
     }
 
-    public static void AddMiss()
+    public void AddMiss()
     {
         misses += 1;
         missLabel.SetText("Miss: " + misses);
-    }
-
-    public static void ResetCounters()
-    {
-        hits = 0;
-        misses = 0;
     }
 }
