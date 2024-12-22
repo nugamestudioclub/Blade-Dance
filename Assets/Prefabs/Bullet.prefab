@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSFX: {fileID: 8300000, guid: f2b33fd83a8c94c8883859e6ebf15946, type: 3}
+  mixerGroup: {fileID: 1559116451526074004, guid: 706b5ae53ad6a450caa469ece0270bc3, type: 2}

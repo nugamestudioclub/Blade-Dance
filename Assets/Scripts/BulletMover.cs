@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BulletMover : MonoBehaviour, IMover
 {
@@ -79,7 +80,7 @@ public class BulletMover : MonoBehaviour, IMover
 
     public void HitPlayer()
     {
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 1.0f);
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
         LevelRunner.AddMiss();
         Destroy(gameObject);
     }

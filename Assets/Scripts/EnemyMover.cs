@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyMover : MonoBehaviour, IMover
 {
@@ -71,14 +72,14 @@ public class EnemyMover : MonoBehaviour, IMover
 
     public void CenterHit()
     {
-        AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
+        AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 0.75f);
         LevelRunner.AddMiss();
         Destroy(gameObject);
     }
 
     public void HitPlayer(int accuracy)
     {
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.25f);
         LevelRunner.AddHit(accuracy);
         Destroy(gameObject);
     }
