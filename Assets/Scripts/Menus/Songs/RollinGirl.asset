@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4e8596d94c724f808610580eb7b2403, type: 3}
-  m_Name: BadApple
+  m_Name: RollinGirl
   m_EditorClassIdentifier: 
-  songIcon: {fileID: 21300000, guid: c4a215eab24dc476ca558f24c7b40553, type: 3}
-  songName: Bad Apple!!
-  bandName: Alstroemeria Records
+  songIcon: {fileID: 21300000, guid: 7916f4babf755034cba676fdb4f9ff87, type: 3}
+  songName: Rollin' Girl
+  bandName: wowaka ft. Hatsune Miku
   levels:
-  - {fileID: 11400000, guid: b86358e347a3d4e8fbb5ac043eca9bcd, type: 2}
+  - {fileID: 11400000, guid: 997e7381da620584e9f2740613b037b4, type: 2}

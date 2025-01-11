@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class BulletMover : MonoBehaviour, IMover
 {
     public AudioClip hitSFX;
+    private LevelRunner levelRunner;
 
     private Vector3 direction;
     private float speed;
@@ -14,7 +15,7 @@ public class BulletMover : MonoBehaviour, IMover
     // Start is called before the first frame update
     void Start()
     {
-
+        levelRunner = GameObject.FindGameObjectWithTag("LevelRunner").GetComponent<LevelRunner>();
     }
 
     // Update is called once per frame
@@ -74,14 +75,14 @@ public class BulletMover : MonoBehaviour, IMover
 
     public void OutOfBounds()
     {
-        LevelRunner.AddHit();
+        levelRunner.AddHit();
         Destroy(gameObject);
     }
 
     public void HitPlayer()
     {
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
-        LevelRunner.AddMiss();
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 1.0f);
+        levelRunner.AddMiss();
         Destroy(gameObject);
     }
 }
