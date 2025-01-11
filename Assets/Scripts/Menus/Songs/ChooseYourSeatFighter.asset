@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e8596d94c724f808610580eb7b2403, type: 3}
+  m_Name: ChooseYourSeatFighter
+  m_EditorClassIdentifier: 
+  songIcon: {fileID: 21300000, guid: 426ed3445df404cf48a82ad734c8bdb1, type: 3}
+  songName: Choose Your Seat Fighter!!
+  bandName: Skylar Hale
+  levels:
+  - {fileID: 11400000, guid: 98d1e62f23a9845528e65b62e73fd0d8, type: 2}
