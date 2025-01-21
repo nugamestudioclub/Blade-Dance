@@ -1,0 +1,298 @@
+song Leia
+bpm 190
+count 8
+notespeed 5
+camerasize 7
+-
+// intro section with weird tempo
+// 1
+1 u
+2 u
+
+3 u -1
+3 d 1
+3 l -1
+3 r 1
+
+4 u -1
+4 d 1
+4 l -1
+4 r 1
+
+5 u -1
+5 d 1
+5 l -1
+5 r 1
+
+// 2
+6.75 d
+7.75 d
+
+8.75 u -1
+8.75 d 1
+8.75 l -1
+8.75 r 1
+
+9.75 u -1
+9.75 d 1
+9.75 l -1
+9.75 r 1
+
+10.75 u -1
+10.75 d 1
+10.75 l -1
+10.75 r 1
+
+11.75 u -1
+11.75 d 1
+11.75 l -1
+11.75 r 1
+
+// 3
+13.25 u
+14.25 u
+
+15.25 u -1
+15.25 d 1
+15.25 l -1
+15.25 r 1
+
+16.25 u -1
+16.25 d 1
+16.25 l -1
+16.25 r 1
+
+17.25 u -1
+17.25 d 1
+17.25 l -1
+17.25 r 1
+
+17.75 r
+
+// 4
+18.75 d
+19.75 d
+
+24 d
+24.5 dr 0
+25 dr 0
+25.5 dr 0
+25.5 r
+
+26 u 1
+26 d -1
+26 r -1
+26 l 1
+
+27 l
+27.5 ul 0
+28 ul 0
+28.5 ul 0
+
+// section repeated sort of
+// 5
+28.75 u
+29.75 u
+
+31 u -1
+31 d 1
+31 l -1
+31 r 1
+
+32 u -1
+32 d 1
+32 l -1
+32 r 1
+
+32 ul 1
+32 dr -1
+32 ur 1
+32 dl -1
+
+33 u -1
+33 d 1
+33 l -1
+33 r 1
+
+34 u -1
+34 d 1
+34 l -1
+34 r 1
+
+34.5 l
+34.5 d 0
+35.125 d
+35.125 r 0
+35.75 r
+
+// 6
+
+37.5 u -1
+37.5 d 1
+37.5 l -1
+37.5 r 1
+
+38 d
+
+39 u -1
+39 d 1
+39 l -1
+39 r 1
+
+39.5 ul 1
+39.5 dr -1
+39.5 ur 1
+39.5 dl -1
+
+40 u -1
+40 d 1
+40 l -1
+40 r 1
+
+41 d
+
+42 u -1
+42 d 1
+42 l -1
+42 r 1
+
+43.2 d
+
+// transition into first verse (note: all the beats from here on are offset by 0.2 for whatever reason)
+44.2 d
+44.7 dl 0
+45.2 l
+45.7 dr 0
+46.2 d
+46.7 dl 0
+46.2 r 0
+47.2 r
+47.7 dr 0
+48.2 d
+49.2 r
+49.2 u 0
+50.2 u
+
+// first vocal section
+// kimi no koe o kikasete
+51.2 l
+51.7 d
+51.7 r 0
+52.2 r
+52.7 d
+
+53.2 u
+
+54.7 d
+54.7 u 1
+54.7 d -1
+
+56.2 l
+57.2 r
+57.7 dr 0
+58.2 dr 0
+58.2 u
+
+59.7 d
+
+60.7 u -1
+60.7 d 1
+60.7 l -1
+60.7 r 1
+
+// yodomu kokoro o haratte
+61.2 r
+61.7 d
+61.7 l 0
+62.2 l
+62.7 d
+
+63.2 u
+
+64.7 d
+64.7 u 1
+64.7 d -1
+
+66.2 r
+67.2 l
+67.7 dl 0
+68.2 dl 0
+68.2 u
+
+69.7 d
+
+70.7 u 1
+70.7 d -1
+70.7 l 1
+70.7 r -1
+// NOT EXHAUSTIVELY TESTED BUT IS MIRROR OF PREVIOUS SECTION WHICH IS TESTED
+
+// itsuwari no kyanbasu o
+71.2 l
+71.7 d
+71.7 r 0
+72.2 r
+72.7 d
+
+73.2 u
+
+74.7 d
+74.7 u 1
+74.7 d -1
+
+76.2 l
+77.2 r
+77.7 dr 0
+78.2 dr 0
+78.2 u
+
+79.7 d
+// NOT EXHAUSTIVELY TESTED BUT IS IDENTICAL TO PREVIOUS SECTION WHICH IS TESTED
+
+// nuritsubushiteku nda 
+81.2 r
+81.7 u 1
+81.7 u -1
+82.2 u
+82.7 l 1
+82.7 l -1
+
+83.2 l
+83.7 ur 0
+84.2 ur 0
+84.7 ur 0
+84.7 u
+// TESTED
+
+86.2 l
+86.7 d 1
+86.7 d -1
+87.2 d
+87.7 r 1
+87.7 r -1
+
+88.2 r
+88.7 dl 0
+89.2 dl 0
+89.7 dl 0
+89.7 d
+// NOT EXHAUSTIVELY TESTED BUT MIRRORS PREVIOUS SECTION WHICH IS TESTED
+// EVERYTHING UP TO THIS POINT SHOULD BE POSSIBLE
+
+// kyou mou
+90.2 u 1
+90.7 d -1
+
+//91.2 u
+91.2 u 1
+91.7 d -1
+
+92.2 u 1
+92.7 d -1
+
+93.2 u 1
+
+94.2 u 1
+
+95.2 u 1
+//
