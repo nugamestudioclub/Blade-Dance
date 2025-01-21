@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e8596d94c724f808610580eb7b2403, type: 3}
   m_Name: Leia
   m_EditorClassIdentifier: 
-  songIcon: {fileID: 21300000, guid: 7916f4babf755034cba676fdb4f9ff87, type: 3}
+  songIcon: {fileID: 21300000, guid: 3ea22bd2e6c1d5a45bcf82d8cf830e33, type: 3}
   songName: Leia
   bandName: Yuyoyuppe ft. Megurine Luka
   levels:
