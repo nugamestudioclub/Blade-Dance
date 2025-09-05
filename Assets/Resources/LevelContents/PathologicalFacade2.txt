@@ -1,0 +1,110 @@
+song pf-cut-3
+bpm 240
+count 0
+notespeed 5
+camerasize 7
+-
+//empty 2 measures
+//intro 2 measures
+
+29 l
+31 r
+33 l
+35 r
+37 l
+39 r
+41 l
+
+43 u
+45 d
+47 u
+49 d
+51 u
+53 d
+55 u
+
+//8 measures before verse
+
+57 r
+59 l 
+59 u 1
+61 u
+63 d
+63 l 1
+65 l
+67 r
+67 d -1
+69 u
+
+71 u
+73 d
+73 r 1
+75 l
+77 r
+77 u -1
+79 d
+81 u 
+81 l -1
+83 r
+
+85 r
+87 l 
+87 u 1
+89 u
+91 d
+91 l 1
+93 l
+95 r
+95 d -1
+97 u
+
+99 u
+101 d
+101 r 1
+103 l
+105 r
+105 u -1
+107 d
+109 u 
+109 l -1
+111 r
+
+// Verse 1
+
+113 r
+114 l
+115 l
+115 u 1
+116 l
+117 r
+118 l
+119 l
+119 u 1
+120 l
+121 u
+122 d
+123 u
+124 d
+125 u
+
+127 u
+128 d
+129 d
+129 l 1
+130 d
+131 u
+132 d
+133 d
+133 l 1
+134 d
+135 l
+136 r
+137 l
+138 r
+139 l
+
+
+
+
+
+

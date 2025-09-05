@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e8596d94c724f808610580eb7b2403, type: 3}
+  m_Name: PathologicalFacade
+  m_EditorClassIdentifier: 
+  songIcon: {fileID: 21300000, guid: 507e8a65f9dcee240a20234c069687ee, type: 3}
+  songName: Pathological Facade
+  bandName: Ghost and Pals
+  levels:
+  - {fileID: 11400000, guid: 280c75f0c15b16f46acae8b912cf3ecc, type: 2}

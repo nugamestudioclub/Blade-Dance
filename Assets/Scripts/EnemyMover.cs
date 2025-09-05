@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyMover : MonoBehaviour, IMover
 {
     public AudioClip hitSFX;
     public AudioClip missSFX;
+    private LevelRunner levelRunner;
 
     private Vector3 direction;
     private float speed;
@@ -17,7 +19,7 @@ public class EnemyMover : MonoBehaviour, IMover
     // Start is called before the first frame update
     void Start()
     {
-
+        levelRunner = GameObject.FindGameObjectWithTag("LevelRunner").GetComponent<LevelRunner>();
     }
 
     // Update is called once per frame
@@ -51,19 +53,19 @@ public class EnemyMover : MonoBehaviour, IMover
 
     private void ResolveRotation()
     {
-        if (direction == Vector3.down)
+        if (direction == Vector3.up)
         {
             transform.Rotate(new Vector3(0f, 0f, 0f));
         }
-        else if (direction == Vector3.right)
+        else if (direction == Vector3.left)
         {
             transform.Rotate(new Vector3(0f, 0f, 90f));
         }
-        else if (direction == Vector3.up)
+        else if (direction == Vector3.down)
         {
             transform.Rotate(new Vector3(0f, 0f, 180f));
         }
-        else if (direction == Vector3.left)
+        else if (direction == Vector3.right)
         {
             transform.Rotate(new Vector3(0f, 0f, 270f));
         }
@@ -72,14 +74,14 @@ public class EnemyMover : MonoBehaviour, IMover
     public void CenterHit()
     {
         AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
-        LevelRunner.AddMiss();
+        levelRunner.AddMiss();
         Destroy(gameObject);
     }
 
     public void HitPlayer(int accuracy)
     {
         AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
-        LevelRunner.AddHit(accuracy);
+        levelRunner.AddHit(accuracy);
         Destroy(gameObject);
     }
 }

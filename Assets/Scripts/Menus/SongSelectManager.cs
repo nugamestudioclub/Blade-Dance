@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 enum MenuSection
 {
@@ -89,6 +90,7 @@ public class SongSelectManager : MonoBehaviour
     {
         if (index >= 0 && index <= track.songs.Count - 1)
         {
+            
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
         }
 

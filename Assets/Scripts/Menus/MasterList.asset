@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songs:
   - {fileID: 11400000, guid: 9479b8d7f8804438ab6cbe13f9be88e3, type: 2}
+  - {fileID: 11400000, guid: a58b742621cd2c24d9fed636dc3b75f1, type: 2}
   - {fileID: 11400000, guid: 1d6445999f9714fe7a133cb5f15778a4, type: 2}
   - {fileID: 11400000, guid: 1fb7d5a2094ca4cd9a64446c4a0764a1, type: 2}
-  - {fileID: 11400000, guid: a2a343f15c7bf924dbd86fe190a6274c, type: 2}
+  - {fileID: 11400000, guid: f0210f93846a987438b4975c4a782070, type: 2}
+  - {fileID: 11400000, guid: 36de7e90639834d668e61c257c91bc25, type: 2}
+  - {fileID: 11400000, guid: 987c6e10d1671e24dbc4da18d223881c, type: 2}
