@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: MasterList
   m_EditorClassIdentifier: 
   songs:
+  - {fileID: 11400000, guid: c6314d194efef564485bafc1f74be813, type: 2}
+  - {fileID: 11400000, guid: a3fbf09f9e73013468af80481a8188bb, type: 2}
   - {fileID: 11400000, guid: 9479b8d7f8804438ab6cbe13f9be88e3, type: 2}
   - {fileID: 11400000, guid: a58b742621cd2c24d9fed636dc3b75f1, type: 2}
   - {fileID: 11400000, guid: 1d6445999f9714fe7a133cb5f15778a4, type: 2}
