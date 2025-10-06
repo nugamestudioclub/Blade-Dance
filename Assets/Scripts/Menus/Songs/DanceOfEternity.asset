@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DanceOfEternity
   m_EditorClassIdentifier: 
   songIcon: {fileID: 21300000, guid: 5a66b2fd3ce790f4a99a489c446f7381, type: 3}
-  songName: 'Act II: Scene Seven: I. The Dance of Eternity'
+  songName: 'Scene Seven: I. The Dance of Eternity'
   bandName: Dream Theater
   levels:
   - {fileID: 11400000, guid: a4d177af090c18145b895ea6324cb3a9, type: 2}
