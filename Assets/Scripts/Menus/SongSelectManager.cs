@@ -171,12 +171,12 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputSongSelect()
     {
-        if (Input.GetKeyUp(KeyCode.W) && !cancelReleasedFromLevelSelect)
+        if (KeybindManager.PressedUp() && !cancelReleasedFromLevelSelect)
         {
             cancelReleasedFromLevelSelect = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Return))
+        if (KeybindManager.PressedRight() || KeybindManager.PressedConfirm())
         {
             menuSection = MenuSection.LevelSelect;
             levelSelectPanel.gameObject.SetActive(true);
@@ -185,11 +185,11 @@ public class SongSelectManager : MonoBehaviour
             levelSelectTargetPosition = startPosition;
             SelectLevel(0);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (KeybindManager.PressedDown())
         {
             IncrementTrack();
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (KeybindManager.PressedUp())
         {
             DecrementTrack();
         }
@@ -197,11 +197,11 @@ public class SongSelectManager : MonoBehaviour
         {
             if (scrollAreaContentRect.anchoredPosition == scrollAreaTargetPosition && cancelReleasedFromLevelSelect)
             {
-                if (Input.GetKey(KeyCode.S))
+                if (KeybindManager.HoldingDown())
                 {
                     IncrementTrack();
                 }
-                else if (Input.GetKey(KeyCode.W))
+                else if (KeybindManager.HoldingUp())
                 {
                     DecrementTrack();
                 }
@@ -211,7 +211,7 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputLevelSelect()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedUp() || KeybindManager.PressedExit())
         {
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
@@ -219,15 +219,15 @@ public class SongSelectManager : MonoBehaviour
             levelSelectPanel.gameObject.SetActive(false);
             cancelReleasedFromLevelSelect = false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (KeybindManager.PressedRight())
         {
             IncrementLevel();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (KeybindManager.PressedLeft())
         {
             DecrementLevel();
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Return))
+        else if (KeybindManager.PressedDown() || KeybindManager.PressedConfirm())
         {
             menuSection = MenuSection.LevelConfirm;
             startButton.SetActive(true);
@@ -238,7 +238,7 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputLevelConfirm()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedUp() || KeybindManager.PressedExit())
         {
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
