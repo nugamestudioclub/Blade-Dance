@@ -131,13 +131,13 @@ public class LevelRunner : MonoBehaviour
 
         if (randDir == 0)
         {
-            spawnPosition = Vector3.up * (edgeDistance + 1f);
-            spawnDirection = Vector3.down;
+            spawnPosition = Vector3.forward * (edgeDistance + 1f);
+            spawnDirection = Vector3.forward;
         }
         else if (randDir == 1)
         {
-            spawnPosition = Vector3.down * (edgeDistance + 1f);
-            spawnDirection = Vector3.up;
+            spawnPosition = -Vector3.forward * (edgeDistance + 1f);
+            spawnDirection = -Vector3.forward;
         }
         else if (randDir == 2)
         {
@@ -167,12 +167,12 @@ public class LevelRunner : MonoBehaviour
     // spawn enemy of 1 of 4 types
     public void SpawnUpEnemy()
     {
-        SpawnEnemy(Vector3.up);
+        SpawnEnemy(Vector3.forward);
     }
 
     public void SpawnDownEnemy()
     {
-        SpawnEnemy(Vector3.down);
+        SpawnEnemy(-Vector3.forward);
     }
 
     public void SpawnLeftEnemy()
@@ -188,42 +188,42 @@ public class LevelRunner : MonoBehaviour
     // spawn bullet of 1 of 8 types
     public void SpawnUpBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.up, Vector3.right * offset);
+        SpawnBulletOffset(Vector3.forward, Vector3.right * offset);
     }
 
     public void SpawnDownBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.down, Vector3.right * offset);
+        SpawnBulletOffset(-Vector3.forward, Vector3.right * offset);
     }
 
     public void SpawnLeftBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.left, Vector3.up * offset);
+        SpawnBulletOffset(Vector3.left, Vector3.forward * offset);
     }
 
     public void SpawnRightBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.right, Vector3.up * offset);
+        SpawnBulletOffset(Vector3.right, Vector3.forward * offset);
     }
 
     public void SpawnUpRightBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.up + Vector3.right, (Vector3.up + Vector3.left) * offset);
+        SpawnBulletOffset(Vector3.forward + Vector3.right, (Vector3.forward + Vector3.left) * offset);
     }
 
     public void SpawnUpLeftBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.up + Vector3.left, (Vector3.up + Vector3.right) * offset);
+        SpawnBulletOffset(Vector3.forward + Vector3.left, (Vector3.forward + Vector3.right) * offset);
     }
 
     public void SpawnDownRightBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.down + Vector3.right, (Vector3.up + Vector3.right) * offset);
+        SpawnBulletOffset(-Vector3.forward + Vector3.right, (Vector3.forward + Vector3.right) * offset);
     }
 
     public void SpawnDownLeftBullet(int offset = 0)
     {
-        SpawnBulletOffset(Vector3.down + Vector3.left, (Vector3.up + Vector3.left) * offset);
+        SpawnBulletOffset(-Vector3.forward + Vector3.left, (Vector3.forward + Vector3.left) * offset);
     }
 
     public void SpawnBulletOffset(Vector3 unitPosition, int offset = 0)
@@ -234,11 +234,11 @@ public class LevelRunner : MonoBehaviour
         {
             if (unitPosition.x + unitPosition.y == 0)
             {
-                offsetDirection = (Vector3.up + Vector3.right) * 0.5f;
+                offsetDirection = (Vector3.forward + Vector3.right) * 0.5f;
             }
             else
             {
-                offsetDirection = (Vector3.up + Vector3.left) * 0.5f;
+                offsetDirection = (Vector3.forward + Vector3.left) * 0.5f;
             }
         }
         else
@@ -249,7 +249,7 @@ public class LevelRunner : MonoBehaviour
             }
             else
             {
-                offsetDirection = Vector3.up;
+                offsetDirection = Vector3.forward;
             }
         }
 

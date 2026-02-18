@@ -25,13 +25,15 @@ public class EnemyMover : MonoBehaviour, IMover
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        Vector3 _dir = (direction.y != 0) ? new Vector3(direction.x, 0, direction.y) : direction;
+        transform.position += _dir * speed * Time.deltaTime;
 
         if (killBounds.Contains(transform.position))
         {
             CenterHit();
         }
 
+        transform.LookAt(Camera.main.transform.position);
         /*
         Vector3 flatPosition = new Vector3(transform.position.x, transform.position.y, 0f);
         if (!debugCheck && flatPosition.magnitude <= 1f)

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -26,11 +25,11 @@ public class PlayerMover : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            targetInput += Vector3.up;
+            targetInput += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            targetInput += Vector3.down;
+            targetInput -= Vector3.forward;
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -97,5 +96,7 @@ public class PlayerMover : MonoBehaviour
         {
             animator.SetInteger("PlayerState", 0);
         }
+        transform.LookAt(Camera.main.transform.position-(Vector3.down*15f));
+        
     }
 }

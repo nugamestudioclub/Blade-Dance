@@ -184,6 +184,7 @@ public class LevelStarter : MonoBehaviour
                 Debug.Log("Failed to parse note direction for line " + (i + 1) + ". Skipping.");
                 continue;
             }
+            direction = new Vector3(direction.x, 0, direction.y);
 
             if (setupLine.Length == 2) {
                 levelContent.Add(new Enemy(beat, direction));
