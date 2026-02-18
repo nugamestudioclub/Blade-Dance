@@ -76,11 +76,11 @@ public class PlayerMover : MonoBehaviour
 
         lastFrameInput = targetInput;
 
-        if (targetInput == Vector3.up)
+        if (targetInput == Vector3.forward)
         {
             animator.SetInteger("PlayerState", 1);
         }
-        else if (targetInput == Vector3.down)
+        else if (targetInput == -Vector3.forward)
         {
             animator.SetInteger("PlayerState", 2);
         }
@@ -96,7 +96,33 @@ public class PlayerMover : MonoBehaviour
         {
             animator.SetInteger("PlayerState", 0);
         }
-        transform.LookAt(Camera.main.transform.position-(Vector3.down*15f));
-        
+
+        ClampRotations();
+    }
+
+    private void ClampRotations()
+    {
+        Vector3 camDif = Camera.main.transform.position - transform.position;
+        camDif = new Vector3(camDif.x, 0, camDif.z);
+        camDif.Normalize();
+        Vector3 target = GetClampedTarget(camDif);
+
+        transform.forward = Vector3.Lerp(transform.forward, target, Time.deltaTime * 5);
+
+    }
+    private Vector3 GetClampedTarget(Vector3 vector)
+    {
+        Vector3 vectorNormalized = vector.normalized;
+        Vector3 absoluteVector = new Vector3(Mathf.Abs(vectorNormalized.x), Mathf.Abs(vectorNormalized.y), Mathf.Abs(vectorNormalized.z));
+        if (absoluteVector.x < absoluteVector.z)
+        {
+            Vector3 ret = new Vector3(0, 0, vectorNormalized.z);
+            return ret;
+        }
+        else
+        {
+            Vector3 ret = new Vector3(vectorNormalized.x, 0, 0);
+            return ret;
+        }
     }
 }
