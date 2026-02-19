@@ -322,6 +322,5 @@ public class LevelRunner : MonoBehaviour
     public void ReduceHealth(float damage)
     {
         health -= damage;
-        Debug.Log("Health: " + health);
     }
 }
