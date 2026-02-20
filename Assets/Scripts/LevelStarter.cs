@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class LevelStarter : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class LevelStarter : MonoBehaviour
     private int countIn;
     private float noteSpeed;
     private float cameraSize;
+
+    [SerializeField] private StudioEventEmitter emitter;
 
     private List<Note> levelContent;
 
@@ -209,7 +213,7 @@ public class LevelStarter : MonoBehaviour
     void Error(){
         //shrugs loudly
         Debug.Log("Here is where I would put my error handling, if I had some.");
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu 1");
     }
 
     /*
@@ -232,13 +236,25 @@ public class LevelStarter : MonoBehaviour
         runner.beatsDelay = countIn;
         runner.noteSpeed = noteSpeed;
         Camera.main.orthographicSize = cameraSize;
-             
+
+        emitter = GetComponent<StudioEventEmitter>();
+
+        emitter.EventReference = RuntimeManager.PathToEventReference("event:/Songs/" + songAudioFilename);
+        if (emitter == null)
+        {
+            Debug.Log("Failed to acquire song file [" + songAudioFilename + "]. Level load failed.");
+            Error();
+        }
+
+
+        /*
         AudioClip currentSong = Resources.Load<AudioClip>("Songs/" + songAudioFilename);
         if (currentSong == null) {
             Debug.Log("Failed to acquire song file [" + songAudioFilename + "]. Level load failed.");
             Error();
         }
         gameObject.GetComponent<AudioSource>().clip = currentSong;
+        */
 
         parseNotes(index);
 

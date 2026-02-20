@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class LevelRunner : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class LevelRunner : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject enemyPrefab;
 
-    public AudioClip countoffSFX;
+    //public AudioClip countoffSFX;
 
     public float noteSpeed = 2f;
     // the number of beats the song will wait before starting
@@ -39,7 +41,12 @@ public class LevelRunner : MonoBehaviour
 
     private float startDspTime;
 
-    private AudioSource musicSource;
+    //private AudioSource musicSource;
+    [SerializeField] private EventReference musicSourceFMOD;
+    [SerializeField] private EventReference countoffSFXfmod;
+    private EventInstance _musicInstance;
+
+    private StudioEventEmitter emitter;
 
     private LevelBase levelContent;
     public BeatMarkerPlacer markerPlacer;
@@ -49,6 +56,11 @@ public class LevelRunner : MonoBehaviour
     private float timeDelayToFinish;
 
     public GameObject endScreen;
+
+    public void Start()
+    {
+        emitter = GetComponent<StudioEventEmitter>();
+    }
 
     // Start is called before the first frame update
     public void LaunchRunner(List<Note> content)
@@ -72,7 +84,9 @@ public class LevelRunner : MonoBehaviour
             missLabel = missLabelHolder;
         }
 
-        musicSource = GetComponent<AudioSource>();
+        //musicSource = GetComponent<AudioSource>();
+        //_musicInstance = RuntimeManager.CreateInstance(musicSourceFMOD);
+        emitter = GetComponent<StudioEventEmitter>();
 
         secPerBeat = 60f / songBpm;
         startDspTime = (float)AudioSettings.dspTime;
@@ -80,7 +94,10 @@ public class LevelRunner : MonoBehaviour
         levelContent = new LevelLoaded(content);
         levelContent.Begin(this, edgeDistance + 1f, noteSpeed, secPerBeat);
 
-        musicSource.PlayScheduled(startDspTime + (beatsDelay + 1) * secPerBeat);
+        //musicSource.PlayScheduled(startDspTime + (beatsDelay + 1) * secPerBeat);
+        //_musicInstance.start();
+        emitter.Play();
+
 
         // secPerbeat * speed = the amount of distance a note travels in one beat
         // use BeatMarkerPlacer to finish
@@ -98,7 +115,7 @@ public class LevelRunner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu 1");
         }
 
         if (activated)
@@ -117,7 +134,13 @@ public class LevelRunner : MonoBehaviour
 
     void EndLevel()
     {
-        musicSource.Stop();
+        //musicSource.Stop();
+        //_musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        //emitter.Stop();
+        emitter = GetComponent<StudioEventEmitter>();
+        emitter.EventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        Debug.Log("in EndLevel");
+
         endScreen.SetActive(true);
         endScreen.GetComponent<LevelEnder>().Populate(hits, hits + misses);
     }

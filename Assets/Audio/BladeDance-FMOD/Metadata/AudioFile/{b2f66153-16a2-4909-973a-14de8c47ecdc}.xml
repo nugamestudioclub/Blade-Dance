@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b2f66153-16a2-4909-973a-14de8c47ecdc}">
+		<property name="assetPath">
+			<value>Songs/electroman.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>152.52897959183673</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dff7389-1c38-452c-b3c8-36ad70be268f}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using FMOD.Studio;
+using FMODUnity;
 
 public class EnemyMover : MonoBehaviour, IMover
 {
-    public AudioClip hitSFX;
-    public AudioClip missSFX;
+    //public AudioClip hitSFX;
+    //public AudioClip missSFX;
+
+    public EventReference hitSFXfmod;
+    public EventReference missSFXfmod;
+
     private LevelRunner levelRunner;
 
     private Vector3 direction;
@@ -73,14 +78,16 @@ public class EnemyMover : MonoBehaviour, IMover
 
     public void CenterHit()
     {
-        AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
+        FMODUnity.RuntimeManager.PlayOneShot(missSFXfmod);
+        //AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
         levelRunner.AddMiss();
         Destroy(gameObject);
     }
 
     public void HitPlayer(int accuracy)
     {
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
+        FMODUnity.RuntimeManager.PlayOneShot(hitSFXfmod);
+        //AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 0.5f);
         levelRunner.AddHit(accuracy);
         Destroy(gameObject);
     }

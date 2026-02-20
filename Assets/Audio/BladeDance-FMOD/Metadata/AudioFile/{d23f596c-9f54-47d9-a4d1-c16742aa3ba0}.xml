@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d23f596c-9f54-47d9-a4d1-c16742aa3ba0}">
+		<property name="assetPath">
+			<value>SFX/samurai-slash-6845.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.71999999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dff7389-1c38-452c-b3c8-36ad70be268f}</destination>
+		</relationship>
+	</object>
+</objects>

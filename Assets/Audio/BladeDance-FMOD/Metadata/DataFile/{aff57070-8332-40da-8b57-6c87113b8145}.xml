@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{aff57070-8332-40da-8b57-6c87113b8145}">
+		<property name="assetPath">
+			<value>SFX/samurai-slash-6845.mp3.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dff7389-1c38-452c-b3c8-36ad70be268f}</destination>
+		</relationship>
+	</object>
+</objects>

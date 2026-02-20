@@ -161,5 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b83f82233f841c3a5b69f41f670c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFX: {fileID: 8300000, guid: f2b33fd83a8c94c8883859e6ebf15946, type: 3}
-  mixerGroup: {fileID: 1559116451526074004, guid: 706b5ae53ad6a450caa469ece0270bc3, type: 2}
+  hitSFXfmod:
+    Guid:
+      Data1: -855818530
+      Data2: 1320343889
+      Data3: 1642131363
+      Data4: 1205233334
+    Path: event:/SFX/HitShortRight1

@@ -11,6 +11,6 @@ public class GameStarter : MonoBehaviour
         Screen.SetResolution(1920, 1080, Screen.fullScreen);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu 1");
     }
 }

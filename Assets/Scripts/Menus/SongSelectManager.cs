@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using FMOD;
+using FMODUnity;
 using UnityEngine.Audio;
 
 enum MenuSection
@@ -24,7 +26,12 @@ public class SongSelectManager : MonoBehaviour
     // measured in pixels per second
     public float scrollSpeed = 100;
 
-    public AudioClip selectSFX;
+    public string testString;
+
+    [SerializeField]
+    private EventReference selectSFXfmod;
+
+    //public AudioClip selectSFX;
 
     public GameObject difficultyButtonPrefab;
 
@@ -90,8 +97,8 @@ public class SongSelectManager : MonoBehaviour
     {
         if (index >= 0 && index <= track.songs.Count - 1)
         {
-            
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
         }
 
         selectedTrack = Mathf.Clamp(index, 0, track.songs.Count - 1);
@@ -131,7 +138,8 @@ public class SongSelectManager : MonoBehaviour
 
         if (index >= 0 && index <= levelCount - 1)
         {
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
         }
 
         selectedLevel = Mathf.Clamp(index, 0, levelCount - 1);
@@ -213,7 +221,8 @@ public class SongSelectManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
         {
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
             menuSection = MenuSection.SongSelect;
             levelSelectPanel.gameObject.SetActive(false);
@@ -232,7 +241,8 @@ public class SongSelectManager : MonoBehaviour
             menuSection = MenuSection.LevelConfirm;
             startButton.SetActive(true);
 
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
         }
     }
 
@@ -240,7 +250,8 @@ public class SongSelectManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
         {
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
             menuSection = MenuSection.LevelSelect;
             startButton.SetActive(false);
@@ -252,9 +263,10 @@ public class SongSelectManager : MonoBehaviour
             LevelHolder.SelectedSong = track.songs[selectedTrack];
             LevelHolder.SelectedDifficulty = track.songs[selectedTrack].levels[selectedLevel].difficulty;
 
-            AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
+            FMODUnity.RuntimeManager.PlayOneShot(selectSFXfmod);
+            //AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("Gameplay 1");
         }
     }
 }

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BulletMover : MonoBehaviour, IMover
 {
-    public AudioClip hitSFX;
+    [SerializeField]
+    private EventReference hitSFXfmod;
+
+    //public AudioClip hitSFX;
     private LevelRunner levelRunner;
 
     private Vector3 direction;
@@ -81,7 +86,8 @@ public class BulletMover : MonoBehaviour, IMover
 
     public void HitPlayer()
     {
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 1.0f);
+        FMODUnity.RuntimeManager.PlayOneShot(hitSFXfmod);
+        //AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 1.0f);
         levelRunner.AddMiss();
         Destroy(gameObject);
     }

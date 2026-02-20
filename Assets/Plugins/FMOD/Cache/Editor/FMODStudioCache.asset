@@ -1,0 +1,569 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8034105284300543923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/Inferno
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/Inferno
+  Guid:
+    Data1: 573217776
+    Data2: 1215035778
+    Data3: 673711781
+    Data4: -1854463602
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 225528
+--- !u!114 &-7645830693305512424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/ChooseYourSeatFighter
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/ChooseYourSeatFighter
+  Guid:
+    Data1: -43989003
+    Data2: 1271911759
+    Data3: 171251103
+    Data4: 873275852
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 145190
+--- !u!114 &-7182950671034472636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639070471823260721
+  FileSizes:
+  - Name: Desktop
+    Value: 33821568
+  Exists: 1
+--- !u!114 &-7095080314375269808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/BadApple
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/BadApple
+  Guid:
+    Data1: -454634238
+    Data2: 1257108271
+    Data3: 1712345522
+    Data4: -724888133
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 219115
+--- !u!114 &-6952776854944608393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639070471823272499
+  FileSizes:
+  - Name: Desktop
+    Value: 1558
+  Exists: 1
+--- !u!114 &-4826748390906366884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/Kyoufuu All Back
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/Kyoufuu All Back
+  Guid:
+    Data1: -1744150034
+    Data2: 1188373355
+    Data3: -544040522
+    Data4: 680290427
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 136407
+--- !u!114 &-3727302840680065878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BadCut0
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BadCut0
+  Guid:
+    Data1: 1697421431
+    Data2: 1250998039
+    Data3: -1106770045
+    Data4: -549501991
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 476
+--- !u!114 &-2340416579235334415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Menu
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Menu
+  Guid:
+    Data1: -655384993
+    Data2: 1194794536
+    Data3: 540669117
+    Data4: 1308010207
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 64000
+--- !u!114 &-1716790943428634326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/samurai-slash-6845
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/samurai-slash-6845
+  Guid:
+    Data1: -1291039988
+    Data2: 1213171449
+    Data3: 355525299
+    Data4: -1439495176
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 720
+--- !u!114 &-1028003416672526855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/pf-cut-3
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/pf-cut-3
+  Guid:
+    Data1: -1471752196
+    Data2: 1175558858
+    Data3: 995650946
+    Data4: 630434303
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 186048
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -6952776854944608393}
+  - {fileID: -7182950671034472636}
+  EditorEvents:
+  - {fileID: -2340416579235334415}
+  - {fileID: 320528462792983696}
+  - {fileID: -8034105284300543923}
+  - {fileID: -7095080314375269808}
+  - {fileID: -1716790943428634326}
+  - {fileID: 4216484591636711504}
+  - {fileID: 526657357264086586}
+  - {fileID: -3727302840680065878}
+  - {fileID: 2903537070046554741}
+  - {fileID: 1794053104677379528}
+  - {fileID: 5307740665111943299}
+  - {fileID: -7645830693305512424}
+  - {fileID: 1075976810669200291}
+  - {fileID: 8186771498700236779}
+  - {fileID: 1589690726003358105}
+  - {fileID: 6361963966265683443}
+  - {fileID: -4826748390906366884}
+  - {fileID: -1028003416672526855}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -7182950671034472636}
+  StringsBanks:
+  - {fileID: -6952776854944608393}
+  cacheTime: 639070471823272499
+  cacheVersion: 131621
+--- !u!114 &320528462792983696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/Meltdown
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/Meltdown
+  Guid:
+    Data1: 1630413943
+    Data2: 1268335181
+    Data3: 1089605791
+    Data4: -2064430219
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 332460
+--- !u!114 &526657357264086586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/electroman
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/electroman
+  Guid:
+    Data1: -1094278822
+    Data2: 1168196438
+    Data3: 1019594381
+    Data4: 636522744
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 152528
+--- !u!114 &1075976810669200291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/RollinGirl
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/RollinGirl
+  Guid:
+    Data1: 1035058179
+    Data2: 1308747656
+    Data3: -1418586455
+    Data4: -441644637
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120946
+--- !u!114 &1589690726003358105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/pathological-facade-cut
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/pathological-facade-cut
+  Guid:
+    Data1: -518927270
+    Data2: 1078162105
+    Data3: -551081327
+    Data4: 986196437
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 186048
+--- !u!114 &1794053104677379528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Metronome-85688
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Metronome-85688
+  Guid:
+    Data1: -2062629655
+    Data2: 1214601637
+    Data3: 780610994
+    Data4: -1022021253
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 816
+--- !u!114 &2903537070046554741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/HitShortRight1
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/HitShortRight1
+  Guid:
+    Data1: -855818530
+    Data2: 1320343889
+    Data3: 1642131363
+    Data4: 1205233334
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 994
+--- !u!114 &4216484591636711504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/MenuClick0
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/MenuClick0
+  Guid:
+    Data1: -720605100
+    Data2: 1319043760
+    Data3: 106039967
+    Data4: -1419230320
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 106
+--- !u!114 &5307740665111943299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/05 I Need You
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/05 I Need You
+  Guid:
+    Data1: -1760492044
+    Data2: 1166170106
+    Data3: 92036011
+    Data4: 1789957044
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 131056
+--- !u!114 &6361963966265683443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/pf-cut-1
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/pf-cut-1
+  Guid:
+    Data1: -1956995182
+    Data2: 1165707620
+    Data3: 856966331
+    Data4: -1671049344
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 186048
+--- !u!114 &8186771498700236779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/leia
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/leia
+  Guid:
+    Data1: 729522727
+    Data2: 1180882211
+    Data3: 1140779166
+    Data4: -922226935
+  Banks:
+  - {fileID: -7182950671034472636}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 252778

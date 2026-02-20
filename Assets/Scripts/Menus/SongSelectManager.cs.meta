@@ -3,7 +3,12 @@ guid: b9e411b7257c545a997c3eacca58ce62
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - track: {fileID: 11400000, guid: 4e4ee2f9d90044717b3b4d1ed924390b, type: 2}
+  - songPanelPrefab: {fileID: 8733270067322017067, guid: 5cb1a0ce9369b42aca456cec3dcee4be, type: 3}
+  - selectPanel: {fileID: 8733270067322017067, guid: 5cb1a0ce9369b42aca456cec3dcee4be, type: 3}
+  - selectSFX: {fileID: 8300000, guid: 179422d8433d54034848e95f820b949c, type: 3}
+  - difficultyButtonPrefab: {fileID: 4126718821745355213, guid: a904d3e970f2f429c9c5aea36b1687c1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
