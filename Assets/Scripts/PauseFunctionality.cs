@@ -9,21 +9,27 @@ public class PauseFunctionality : MonoBehaviour
 
     void TogglePause()
     {
-        Debug.Log("Is Pausing!");
-
         if (isPaused)
         {
-            isPaused = false;
-            Time.timeScale = 1;
-            
-        }
-
-        else
+            UnPause();
+        } else
         {
-            isPaused = true;
-            Time.timeScale = 0;
-            
+            Pause();
         }
+    }
+
+    void Pause()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+    }
+
+    void UnPause()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     // Start is called before the first frame update
@@ -39,5 +45,10 @@ public class PauseFunctionality : MonoBehaviour
         {
             TogglePause();
         }
+    }
+
+    private void OnDestroy()
+    {
+        UnPause();
     }
 }
