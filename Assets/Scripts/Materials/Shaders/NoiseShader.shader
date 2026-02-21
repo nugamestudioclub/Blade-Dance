@@ -101,7 +101,7 @@ Shader "UI/SineWaveImage_Fixed"
 
                 // --------- 1) Pick which band (bin) this pixel belongs to ----------
                 float bandCount = max(1.0, _BandCount);
-                float _x = (uv.x-0.5f)<0? uv.x : 1.0f - uv.x;
+                float _x = (uv.x-0.5f)<0? 0.5f-uv.x : uv.x-0.5f;
                 float idx = floor(_x * bandCount);           // 0..bandCount-1
                 float u = (idx + 0.5) / bandCount;             // center sample for that band
 
@@ -111,7 +111,7 @@ Shader "UI/SineWaveImage_Fixed"
 
                 // Optional: make "stacked blocks" like classic equalizers
                 float steps = max(1.0, _Steps);
-                a = floor(a * steps/2) / steps;
+                a = floor(a * steps) / steps;
 
                 // Convert amplitude into a bar thickness (in UV units)
                 float bar = a * _Height*0.5f;                       // e.g. _Height = 0.25 means max 25% from top/bottom
@@ -128,7 +128,7 @@ Shader "UI/SineWaveImage_Fixed"
                 float gapMask = smoothstep(halfGap - _GapSoft, halfGap + _GapSoft, dist);
 
                 // --------- 5) Mirrored gradient (top->center and bottom->center) ----------
-                float t = saturate(abs(uv.y - 0.5) * 2.0);   // 0 at center, 1 at rims//2.0
+                float t = saturate(abs(uv.y - 0.5) * 2.0);   // 0 at center, 1 at rims
                 t = pow(t, _GradPow);
                 fixed3 gradRGB = lerp(_GradB.rgb, _GradA.rgb, t);
 
