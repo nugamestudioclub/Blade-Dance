@@ -19,6 +19,8 @@ public class SongSelectManager : MonoBehaviour
 
     public GameObject songPanelPrefab;
 
+    public GameObject settingsKeybindPrefab;
+
     public GameObject selectPanel;
 
     // measured in pixels per second
@@ -49,6 +51,11 @@ public class SongSelectManager : MonoBehaviour
 
     private GameObject startButton;
 
+    private Transform settingsMenuObj;
+    private Transform settingsAreaContent;
+    CanvasGroup settingsMenuCanvasGroup;
+    private bool settingsMenuOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +66,10 @@ public class SongSelectManager : MonoBehaviour
 
         scrollAreaContent = this.transform.Find("ScrollArea").Find("Content");
         scrollAreaContentRect = scrollAreaContent.GetComponent<RectTransform>();
+
+        settingsMenuObj = this.transform.Find("SettingsArea");
+        settingsAreaContent = settingsMenuObj.Find("Content");
+        settingsMenuCanvasGroup = settingsMenuObj.GetComponent<CanvasGroup>();
 
         Transform songDetail = this.transform.Find("SongDetail");
         songDetailImage = songDetail.Find("Image").GetComponent<Image>();
@@ -80,6 +91,27 @@ public class SongSelectManager : MonoBehaviour
             infoPanel.Find("BandName").GetComponent<TMP_Text>().SetText(song.bandName);
             infoPanel.Find("Difficulties").GetComponent<TMP_Text>().SetText("Difficulty: " + song.GetDifficultyList());
         }
+
+        int idx = 0;
+        foreach (var (name, keyCode) in KeybindManager.Keybinds)
+        {
+            GameObject nextPanel = Instantiate(settingsKeybindPrefab, settingsAreaContent);
+            nextPanel.transform.Find("BindName").GetComponent<TMP_Text>().SetText(name);
+            nextPanel.transform.Find("Button").transform.Find("KeyName").GetComponent<TMP_Text>().SetText(keyCode.ToString());
+
+            RectTransform rect = nextPanel.GetComponent<RectTransform>();
+            Vector2 pos = rect.anchoredPosition;
+            pos.y += (idx + 5) * 80;
+            rect.anchoredPosition = pos;
+            idx--;
+
+            // TODO: Here in the code, fill in the SettingsKeybindItem prefab's Button "OnClick ()" list; make a new function
+            // in this object and link it. It should set the settings menu as locked until you press a key (no closing settings
+            // until you press a new key); then update the new key in the KeybindManager and unlock.
+        }
+
+        // Start with settings hidden
+        HideSettingsMenu();
 
         scrollAreaContentRect.anchoredPosition = new Vector2(0f, (track.songs.Count - 1) * -112.5f);
         SelectTrack(0);
@@ -149,13 +181,40 @@ public class SongSelectManager : MonoBehaviour
         SelectLevel(selectedLevel - 1);
     }
 
+    private void HideSettingsMenu()
+    {
+        settingsMenuCanvasGroup.alpha = 0f;
+        settingsMenuCanvasGroup.interactable = false;
+        settingsMenuCanvasGroup.blocksRaycasts = false;
+    }
+
+    private void ShowSettingsMenu()
+    {
+        settingsMenuCanvasGroup.alpha = 1f;
+        settingsMenuCanvasGroup.interactable = true;
+        settingsMenuCanvasGroup.blocksRaycasts = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        // Setting menu; prevents all other actions
+        if (KeybindManager.PressedSettingsMenu()) {
+            settingsMenuOpen = !settingsMenuOpen;
+            if (settingsMenuOpen) {
+                ShowSettingsMenu();
+            } else {
+                HideSettingsMenu();
+            }
+        }
+
         scrollAreaContentRect.anchoredPosition = Vector2.MoveTowards(scrollAreaContentRect.anchoredPosition, scrollAreaTargetPosition, scrollSpeed * Time.deltaTime);
         levelSelectPanel.anchoredPosition = Vector2.MoveTowards(levelSelectPanel.anchoredPosition, levelSelectTargetPosition, scrollSpeed * Time.deltaTime);
 
-        if (menuSection == MenuSection.SongSelect)
+        if (settingsMenuOpen) {
+            SettingsMenuSelect();
+        }
+        else if (menuSection == MenuSection.SongSelect)
         {
             InputSongSelect();
         }
@@ -167,6 +226,11 @@ public class SongSelectManager : MonoBehaviour
         {
             InputLevelConfirm();
         }
+    }
+
+    private void SettingsMenuSelect()
+    {
+
     }
 
     private void InputSongSelect()
