@@ -22,6 +22,9 @@ public class LevelLoadedV2
 
     private bool levelComplete;
 
+    // the beat at which the level is finished spawning all notes
+    private float finishedAtBeat;
+
     public LevelLoadedV2(List<Note> content)
     {
         this.content = content;
@@ -62,14 +65,15 @@ public class LevelLoadedV2
                 {
                     if (note is Enemy)
                     {
-                        // runner.SpawnEnemy(note.direction);
                         Enemy enemy = note as Enemy;
                         runner.AddEnemy(enemy);
+                        // runner.SpawnEnemy(note.direction);
                     }
                     else if (note is Bullet)
                     {
                         Bullet bullet = note as Bullet;
-                        runner.SpawnBulletOffset(bullet.direction, bullet.offset);
+                        runner.AddBullet(bullet);
+                        // runner.SpawnBulletOffset(bullet.direction, bullet.offset);
                     }
 
                     note.spawned = true;
@@ -77,6 +81,7 @@ public class LevelLoadedV2
                     if (note == content[content.Count - 1])
                     {
                         levelComplete = true;
+                        finishedAtBeat = beat;
                     }
                 }
             }
@@ -86,5 +91,10 @@ public class LevelLoadedV2
     public bool IsLevelComplete()
     {
         return levelComplete;
+    }
+
+    public float GetBeatFinishedAt()
+    {
+        return finishedAtBeat;
     }
 }

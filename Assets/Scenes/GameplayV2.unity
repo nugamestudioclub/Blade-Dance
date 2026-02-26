@@ -7211,7 +7211,7 @@ MonoBehaviour:
   missLabel: {fileID: 0}
   hitLabelHolder: {fileID: 1590794997}
   missLabelHolder: {fileID: 1290442356}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 3868144328881615563, guid: 142eb4b858b3a47eb94864dc255719ca, type: 3}
   enemyPrefab: {fileID: 2098210608432361184, guid: cdefd3d376b964af5a0ecbfe5cf426c5, type: 3}
   countoffSFX: {fileID: 0}
   noteSpeed: 5

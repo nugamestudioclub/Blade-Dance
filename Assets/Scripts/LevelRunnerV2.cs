@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public class LevelRunnerV2 : MonoBehaviour
 {
@@ -48,9 +49,11 @@ public class LevelRunnerV2 : MonoBehaviour
 
     // the list of all enemies rendered onto the screen this frame
     private List<EnemyMoverV2> activeEnemies = new List<EnemyMoverV2>();
+    // the list of all bullets rendered onto the screen this frame
+    private List<BulletMoverV2> activeBullets = new List<BulletMoverV2>();
 
     private bool activated = false;
-    private float timeDelayToFinish;
+    private float beatDelayToFinish;
 
     public GameObject endScreen;
 
@@ -94,7 +97,7 @@ public class LevelRunnerV2 : MonoBehaviour
 
         activated = true;
 
-        timeDelayToFinish = (edgeDistance * 2f + 4f) / noteSpeed;
+        beatDelayToFinish = ((edgeDistance * 2f + 4f) / noteSpeed) / secPerBeat;
     }
 
     // Update is called once per frame
@@ -117,11 +120,12 @@ public class LevelRunnerV2 : MonoBehaviour
             // process the final positions of all notes to resolve game mechanics
             DeleteBoundedNotes();
 
-
-            if (levelContent.IsLevelComplete())
+            // if (levelContent.IsLevelComplete() && levelContent.GetBeatFinishedAt() + beatDelayToFinish <= beatPosition)
+            if (levelContent.IsLevelComplete() && !activeEnemies.Any() && !activeBullets.Any())
             {
                 activated = false;
-                Invoke("EndLevel", timeDelayToFinish);
+                // EndLevel();
+                Invoke("EndLevel", 2f);
             }
         }
     }
@@ -144,7 +148,38 @@ public class LevelRunnerV2 : MonoBehaviour
 
     public void AddBullet(Bullet nextBullet)
     {
-        // TODO later after enemies tested
+        GameObject nextSpawn = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
+        BulletMoverV2 nextMover = nextSpawn.GetComponent<BulletMoverV2>();
+        nextMover.FindRunner();
+        // replace .zero with the displacement dependent on direction
+        // nextBullet.offset * 
+        Vector3 offsetDirection;
+        if (nextBullet.direction.x != 0 && nextBullet.direction.y != 0)
+        {
+            if (nextBullet.direction.x + nextBullet.direction.y == 0)
+            {
+                offsetDirection = (Vector3.up + Vector3.right) * 0.5f;
+            }
+            else
+            {
+                offsetDirection = (Vector3.up + Vector3.left) * 0.5f;
+            }
+        }
+        else
+        {
+            if (nextBullet.direction.x == 0)
+            {
+                offsetDirection = Vector3.right;
+            }
+            else
+            {
+                offsetDirection = Vector3.up;
+            }
+        }
+        offsetDirection *= nextBullet.offset;
+
+        nextMover.SetProperties(offsetDirection, -1f * nextBullet.direction, secPerBeat * noteSpeed, nextBullet.targetBeat, killBounds);
+        activeBullets.Add(nextMover);
     }
 
     public void UpdateAllNotePositions(float beat)
@@ -153,10 +188,15 @@ public class LevelRunnerV2 : MonoBehaviour
         {
             enemy.UpdatePosition(beat);
         }
+        foreach (BulletMoverV2 bullet in activeBullets)
+        {
+            bullet.UpdatePosition(beat);
+        }
     }
 
     public void DeleteBoundedNotes()
     {
+        // enemy list
         List<int> removeIndexes = new List<int>();
         for (int i = 0; i < activeEnemies.Count; i++)
         {
@@ -173,7 +213,27 @@ public class LevelRunnerV2 : MonoBehaviour
             activeEnemies.RemoveAt(index - indexDisplacement);
             indexDisplacement += 1;
         }
+
+        // bullet list
+        removeIndexes = new List<int>();
+        for (int i = 0; i < activeBullets.Count; i++)
+        {
+            bool bulletRemoved = activeBullets[i].RemoveAtBounds();
+            if (bulletRemoved)
+            {
+                removeIndexes.Add(i);
+            }
+        }
+
+        indexDisplacement = 0;
+        foreach (int index in removeIndexes)
+        {
+            activeBullets.RemoveAt(index - indexDisplacement);
+            indexDisplacement += 1;
+        }
     }
+
+
 
     void SpawnRandomBullet()
     {
@@ -358,6 +418,12 @@ public class LevelRunnerV2 : MonoBehaviour
     public void AddHit()
     {
         AddHit(1);
+    }
+
+    public void AddMiss(BulletMoverV2 bulletMover)
+    {
+        AddMiss();
+        activeBullets.Remove(bulletMover);
     }
 
     public void AddMiss()

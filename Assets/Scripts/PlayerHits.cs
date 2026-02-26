@@ -30,7 +30,7 @@ public class PlayerHits : MonoBehaviour
 
             for (int i = 0; i < overlapNumber; i++)
             {
-                overlaps[i].GetComponent<BulletMover>().HitPlayer();
+                overlaps[i].GetComponent<BulletMoverV2>().HitPlayer();
             }
         }
     }
