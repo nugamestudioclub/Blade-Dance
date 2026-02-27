@@ -2984,7 +2984,6 @@ MonoBehaviour:
   selectPanel: {fileID: 1547232373}
   scrollSpeed: 1000
   selectSFX: {fileID: 8300000, guid: 4ececb5ddec9e4de99382711a87f3ed5, type: 3}
-  outputAudioMixerGroup: {fileID: 1559116451526074004, guid: 706b5ae53ad6a450caa469ece0270bc3, type: 2}
   difficultyButtonPrefab: {fileID: 4126718821745355213, guid: a904d3e970f2f429c9c5aea36b1687c1, type: 3}
 --- !u!224 &2002176788 stripped
 RectTransform:
