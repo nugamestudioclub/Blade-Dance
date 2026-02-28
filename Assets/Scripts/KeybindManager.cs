@@ -185,6 +185,43 @@ public static class KeybindManager
         return JSONSave();
     }
 
+    public static bool SetKeybind(
+        string bindName,
+        KeyCode newKey
+    ) {
+        if (bindName == "up_p") {
+            up_p = newKey;
+        } else if (bindName == "up_s") {
+            up_s = newKey;
+        } else if (bindName == "down_p") {
+            down_p = newKey;
+        } else if (bindName == "down_s") {
+            down_s = newKey;
+        } else if (bindName == "left_p") {
+            left_p = newKey;
+        } else if (bindName == "left_s") {
+            left_s = newKey;
+        } else if (bindName == "right_p") {
+            right_p = newKey;
+        } else if (bindName == "right_s") {
+            right_s = newKey;
+        } else if (bindName == "settingsMenu") {
+            settingsMenu = newKey;
+        } else if (bindName == "menuConfirm") {
+            menuConfirm = newKey;
+        } else if (bindName == "exitKey") {
+            exitKey = newKey;
+        } else if (bindName == "pauseKey") {
+            pauseKey = newKey;
+        } else {
+            return false; // Invalid bind name
+        }
+
+        return SetKeybinds(
+            up_p, up_s, down_p, down_s, left_p, left_s, right_p, right_s, settingsMenu, menuConfirm, exitKey, pauseKey
+        ); // This will also save to JSON
+    }
+
     public static bool HoldingUp() {
         return Input.GetKey(up_p) || Input.GetKey(up_s);
     }

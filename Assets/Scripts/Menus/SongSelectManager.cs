@@ -56,6 +56,10 @@ public class SongSelectManager : MonoBehaviour
     CanvasGroup settingsMenuCanvasGroup;
     private bool settingsMenuOpen = false;
 
+    private bool awaitingSetKeybind = false; // If true, next key press will be used to set a keybind.
+    private string bindNameToSet = "";       // Name of the keybind currently being set (if applicable).
+    private TMP_Text buttonTextToSet = null; // Button text we need to update after setting the keybind
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,22 +96,31 @@ public class SongSelectManager : MonoBehaviour
             infoPanel.Find("Difficulties").GetComponent<TMP_Text>().SetText("Difficulty: " + song.GetDifficultyList());
         }
 
+        // Settings menu setup
         int idx = 0;
+        string[] keybindNames = {
+            "up_p", "up_s", "down_p", "down_s", "left_p", "left_s", "right_p", "right_s", "settingsMenu", "menuConfirm", "exitKey", "pauseKey"
+        };
         foreach (var (name, keyCode) in KeybindManager.Keybinds)
         {
+            // Init from prefab
             GameObject nextPanel = Instantiate(settingsKeybindPrefab, settingsAreaContent);
             nextPanel.transform.Find("BindName").GetComponent<TMP_Text>().SetText(name);
-            nextPanel.transform.Find("Button").transform.Find("KeyName").GetComponent<TMP_Text>().SetText(keyCode.ToString());
+            TMP_Text buttonTmpElem = nextPanel.transform.Find("Button").transform.Find("KeyName").GetComponent<TMP_Text>();
+            buttonTmpElem.SetText(keyCode.ToString());
 
+            // Positioning
             RectTransform rect = nextPanel.GetComponent<RectTransform>();
             Vector2 pos = rect.anchoredPosition;
-            pos.y += (idx + 5) * 80;
+            pos.y += (5 - idx) * 80;
             rect.anchoredPosition = pos;
-            idx--;
+            
+            // Button click listener
+            string argument = keybindNames[idx];
+            Button button = nextPanel.transform.Find("Button").GetComponent<Button>();
+            button.onClick.AddListener(() => startSetKeybind(argument, buttonTmpElem));
 
-            // TODO: Here in the code, fill in the SettingsKeybindItem prefab's Button "OnClick ()" list; make a new function
-            // in this object and link it. It should set the settings menu as locked until you press a key (no closing settings
-            // until you press a new key); then update the new key in the KeybindManager and unlock.
+            idx++;
         }
 
         // Start with settings hidden
@@ -115,6 +128,17 @@ public class SongSelectManager : MonoBehaviour
 
         scrollAreaContentRect.anchoredPosition = new Vector2(0f, (track.songs.Count - 1) * -112.5f);
         SelectTrack(0);
+    }
+
+    public bool startSetKeybind(string bindName, TMP_Text buttonText) {
+        if (awaitingSetKeybind) {
+            return false; // Already waiting for a keybind, ignore this request
+        }
+
+        awaitingSetKeybind = true;
+        bindNameToSet = bindName;
+        buttonTextToSet = buttonText;
+        return true;
     }
 
     // assumes that we want to treat index beyond the track list bounds as edge selections
@@ -198,6 +222,37 @@ public class SongSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Scrolling the song menu
+        scrollAreaContentRect.anchoredPosition = Vector2.MoveTowards(scrollAreaContentRect.anchoredPosition, scrollAreaTargetPosition, scrollSpeed * Time.deltaTime);
+        levelSelectPanel.anchoredPosition = Vector2.MoveTowards(levelSelectPanel.anchoredPosition, levelSelectTargetPosition, scrollSpeed * Time.deltaTime);
+
+        // Setting keybinds, if currently in the set keybinds menu
+        if (awaitingSetKeybind) {
+            // Check for any key press
+            if (Input.anyKeyDown) {
+                foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) {
+                    if (Input.GetKeyDown(keyCode)) {
+                        // Set the new keybind in the KeybindManager
+                        bool success = KeybindManager.SetKeybind(bindNameToSet, keyCode);
+                        awaitingSetKeybind = false;
+                        bindNameToSet = "";
+
+                        if (success) {
+                            Debug.Log("Keybind set.");
+                            buttonTextToSet.SetText(keyCode.ToString());
+                        } else {
+                            Debug.LogError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
+                            // TODO: Might want to show an error notification in the UI if this happens.
+                        }
+                        break;
+                    }
+                }
+            }
+
+            // Skip the rest of the update loop while waiting for keybind input
+            return;
+        }
+
         // Setting menu; prevents all other actions
         if (KeybindManager.PressedSettingsMenu()) {
             settingsMenuOpen = !settingsMenuOpen;
@@ -208,11 +263,8 @@ public class SongSelectManager : MonoBehaviour
             }
         }
 
-        scrollAreaContentRect.anchoredPosition = Vector2.MoveTowards(scrollAreaContentRect.anchoredPosition, scrollAreaTargetPosition, scrollSpeed * Time.deltaTime);
-        levelSelectPanel.anchoredPosition = Vector2.MoveTowards(levelSelectPanel.anchoredPosition, levelSelectTargetPosition, scrollSpeed * Time.deltaTime);
-
         if (settingsMenuOpen) {
-            SettingsMenuSelect();
+            // Nothing needed here for now since the buttons handle their own input
         }
         else if (menuSection == MenuSection.SongSelect)
         {
@@ -226,11 +278,6 @@ public class SongSelectManager : MonoBehaviour
         {
             InputLevelConfirm();
         }
-    }
-
-    private void SettingsMenuSelect()
-    {
-
     }
 
     private void InputSongSelect()
