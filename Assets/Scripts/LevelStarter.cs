@@ -240,11 +240,7 @@ public class LevelStarter : MonoBehaviour
         emitter = GetComponent<StudioEventEmitter>();
 
         emitter.EventReference = RuntimeManager.PathToEventReference("event:/Songs/" + songAudioFilename);
-        if (emitter == null)
-        {
-            Debug.Log("Failed to acquire song file [" + songAudioFilename + "]. Level load failed.");
-            Error();
-        }
+       
 
 
         /*

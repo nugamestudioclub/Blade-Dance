@@ -32,7 +32,9 @@ public class LevelRunner : MonoBehaviour
     private Bounds killBounds;
     private Bounds centerBounds;
 
-    public float songBpm;
+    [SerializeField] public float songBpm;
+    
+    [SerializeField] public float delayToTest;
 
     private float secPerBeat;
     private float secondPosition;
@@ -94,6 +96,7 @@ public class LevelRunner : MonoBehaviour
         levelContent = new LevelLoaded(content);
         levelContent.Begin(this, edgeDistance + 1f, noteSpeed, secPerBeat);
 
+        delayToTest = startDspTime + (beatsDelay + 1) * secPerBeat;
         //musicSource.PlayScheduled(startDspTime + (beatsDelay + 1) * secPerBeat);
         //_musicInstance.start();
         emitter.Play();
@@ -123,6 +126,7 @@ public class LevelRunner : MonoBehaviour
             secondPosition = (float)(AudioSettings.dspTime - startDspTime);
             beatPosition = secondPosition / secPerBeat;
             levelContent.AtBeat(beatPosition - beatsDelay);
+            //levelContent.AtBeat(beatPosition);
 
             if (levelContent.IsLevelComplete())
             {

@@ -7085,7 +7085,6 @@ MonoBehaviour:
   missLabelHolder: {fileID: 1290442356}
   bulletPrefab: {fileID: 3868144328881615563, guid: 822f589ae3b8a463da27d2b7792a1ad3, type: 3}
   enemyPrefab: {fileID: 2098210608432361184, guid: 85e91722338fb4c66b925a8563023b49, type: 3}
-  countoffSFX: {fileID: 8300000, guid: c3fc5a16c3d4c422ab6754e69ee07565, type: 3}
   noteSpeed: 5
   beatsDelay: 8
   songBpm: 170
@@ -7096,6 +7095,13 @@ MonoBehaviour:
       Data3: 1712345522
       Data4: -724888133
     Path: event:/Songs/Bad Apple
+  countoffSFXfmod:
+    Guid:
+      Data1: -2062629655
+      Data2: 1214601637
+      Data3: 780610994
+      Data4: -1022021253
+    Path: event:/SFX/Metronome-85688
   markerPlacer: {fileID: 1850338009}
   metronome: {fileID: 1495979764}
   endScreen: {fileID: 1129918704}
@@ -7208,7 +7214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 2091304221}
-  emitter: {fileID: 0}
+  emitter: {fileID: 2091304224}
 --- !u!114 &2091304224
 MonoBehaviour:
   m_ObjectHideFlags: 0
