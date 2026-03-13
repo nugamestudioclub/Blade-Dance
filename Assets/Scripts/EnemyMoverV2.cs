@@ -20,6 +20,8 @@ public class EnemyMoverV2 : MonoBehaviour
 
     private Bounds killBounds;
 
+    private bool testTesterTestest = true;
+
     //public AudioClip debugSound;
     //private bool debugCheck = false;
 
@@ -42,6 +44,32 @@ public class EnemyMoverV2 : MonoBehaviour
         // currentBeat -> position
         // position = targetLocation + (currentBeat - targetBeat) * speed * direction
         transform.position = criticalPosition + (beat - criticalBeat) * unitsPerBeat * direction;
+        //Debug.Log("current: " + transform.position + ", crit: " + criticalPosition + ", beat: " + beat + ", crit beat: " + criticalBeat);
+        /*if (Mathf.Abs(transform.position.magnitude) < criticalPosition.magnitude)
+        {
+            transform.position = criticalPosition;
+        }*/
+
+        //Debug.Log(direction);
+        /*if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            if (Mathf.Abs(transform.position.magnitude) < 1.5)
+            {
+                Debug.Log("hi christain");
+                Debug.Log("current: " + transform.position + ", crit: " + criticalPosition + ", beat: " + beat + ", crit beat: " + criticalBeat);
+            }
+        }*/
+
+        /*if (direction.x < 0 && transform.position.x < criticalPosition.x || direction.y < 0 && transform.position.y < criticalPosition.y)
+        {
+            Debug.Log("hi christain" + Random.Range(0, 1000000));
+            transform.position = new Vector3(0, 0, 0);
+        }
+        else if (direction.x > 0 && transform.position.x > criticalPosition.x || direction.y > 0 && transform.position.y > criticalPosition.y)
+        {
+            Debug.Log("hi christain" + Random.Range(0, 1000000));
+            transform.position = new Vector3(0, 0, 0);
+        }*/
     }
 
     public bool RemoveAtBounds()
