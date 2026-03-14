@@ -5,7 +5,13 @@ using UnityEngine;
 public class PauseFunctionality : MonoBehaviour
 {
     private static KeyCode PAUSE_KEY = KeyCode.P;
-    private bool isPaused = false;
+    private static bool isPaused = false;
+
+    // Returns true if the game is paused.
+    public static bool getIsPaused()
+    {
+        return isPaused;
+    }
 
     void TogglePause()
     {
@@ -47,7 +53,7 @@ public class PauseFunctionality : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         UnPause();
     }

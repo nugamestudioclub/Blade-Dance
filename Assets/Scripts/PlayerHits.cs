@@ -23,6 +23,11 @@ public class PlayerHits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseFunctionality.getIsPaused())
+        {
+            return;
+        }
+        
         if (playerCollider.IsTouchingLayers(bulletMask))
         {
             Collider2D[] overlaps = new Collider2D[8];

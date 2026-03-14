@@ -22,6 +22,11 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseFunctionality.getIsPaused())
+        {
+            return;
+        }
+        
         Vector3 targetInput = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))

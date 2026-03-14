@@ -26,6 +26,11 @@ public class PlayerStriker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseFunctionality.getIsPaused())
+        {
+            return;
+        }
+        
         int keyCount = 0;
         for (int i = 0; i < 4; i++)
         {
