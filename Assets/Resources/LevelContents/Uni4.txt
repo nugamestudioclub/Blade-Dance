@@ -1,0 +1,107 @@
+song Uni
+bpm 131
+count 4
+notespeed 7
+camerasize 7
+-
+
+1.5 u
+2.5 u
+3.5 u
+4.5 u
+5.5 u
+6.5 u
+7.5 u
+8.5 u
+
+9.5 u
+10.5 u
+11.5 u
+12.5 u
+13.5 u
+14.5 u
+15.5 u
+16.5 u
+
+17.5 l
+18 r
+18.5 l
+19 r
+19.5 l
+20 r
+20.5 l
+21 r
+21.5 l
+22 r
+22.5 l
+23 r
+23.5 l
+24 r
+24.5 l
+25 r
+
+25.5 l
+26 r
+26.5 l
+27 r
+27.5 l
+28 r
+28.5 l
+29 r
+
+// uni uni la-ta-ta!
+29.5 l
+29.75 u
+30 r
+30.25 d
+30.5 l
+31 r
+31.5 l
+
+// la-li-la ta-ru-ta ta-ru-ra-pa-pa
+33 r
+33.25 l
+33.5 r
+34 r
+34.25 l
+34.5 r
+35 r
+35.25 l
+35.5 r
+36 d
+36.5 d
+
+// uni-uni ra-pa-pa
+37.5 l
+37.75 u
+38 l
+38.25 u
+38.5 l
+39 r
+39 d -1
+39.5 r
+39.5 d -1
+
+// la-li-la ta-ru-ta ta-ru-ra-ta-ta
+41 r
+41.25 l
+41.5 r
+42 r
+42.25 l
+42.5 r
+43 r
+43.25 l
+43.5 r
+44 u
+44.5 u
+
+// uni-uni ra-ta-ta
+45.5 r
+45.75 u
+46 r
+46.25 u
+46.5 r
+47 l
+47 d 1
+47.5 l
+47.5 d 1
