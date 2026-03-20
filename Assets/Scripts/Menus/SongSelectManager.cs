@@ -60,6 +60,7 @@ public class SongSelectManager : MonoBehaviour
     private string bindNameToSet = "";       // Name of the keybind currently being set (if applicable).
     private string previousBindName = "";    // Previous keybind name, used to revert back if needed.
     private TMP_Text buttonTextToSet = null; // Button text we need to update after setting the keybind
+    private Dictionary<string, TMP_Text> keybindNamesToButtons = new Dictionary<string, TMP_Text>();
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +110,7 @@ public class SongSelectManager : MonoBehaviour
             nextPanel.transform.Find("BindName").GetComponent<TMP_Text>().SetText(name);
             TMP_Text buttonTmpElem = nextPanel.transform.Find("Button").transform.Find("KeyName").GetComponent<TMP_Text>();
             buttonTmpElem.SetText(keyCode.ToString());
+            keybindNamesToButtons.Add(name, buttonTmpElem); // Store reference to the button text for this keybind for easy updating when the keybind is changed
 
             // Positioning
             RectTransform rect = nextPanel.GetComponent<RectTransform>();
@@ -123,6 +125,22 @@ public class SongSelectManager : MonoBehaviour
 
             idx++;
         }
+        // Reset to defaults button listener
+        settingsAreaContent.transform.Find("KeybindDefaults").GetComponent<Button>().onClick.AddListener(() => {
+            if (KeybindManager.ResetKeybindsToDefault()) {
+                // Update all button texts to reflect default keybinds
+                int i = 0;
+                foreach (var (name, keyCode) in KeybindManager.Keybinds)
+                {
+                    keybindNamesToButtons[name].SetText(keyCode.ToString());
+                    i++;
+                }
+            }
+            else {
+                Debug.LogError("Failed to reset keybinds to default. JSON save failure.");
+                NotificationManager.NotifyError("Failed to reset keybinds to default. JSON save failure.");
+            }
+        });
 
         // Start with settings hidden
         HideSettingsMenu();
@@ -242,14 +260,11 @@ public class SongSelectManager : MonoBehaviour
                         bindNameToSet = "";
 
                         if (success) {
-                            Debug.Log("Keybind set.");
                             buttonTextToSet.SetText(keyCode.ToString());
                         } else {
                             Debug.LogError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
                             NotificationManager.NotifyError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
                             buttonTextToSet.SetText(previousBindName); // Revert to previous keybind name on failure
-
-                            // TODO: Might want to show an error notification in the UI if this happens.
                         }
                         break;
                     }

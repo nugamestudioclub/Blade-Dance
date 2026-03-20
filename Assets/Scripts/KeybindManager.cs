@@ -207,6 +207,24 @@ public static class KeybindManager
         ); // This will also save to JSON
     }
 
+    public static bool ResetKeybindsToDefault()
+    {
+        return SetKeybinds(
+            KeyCode.W,
+            KeyCode.UpArrow,
+            KeyCode.S,
+            KeyCode.DownArrow,
+            KeyCode.A,
+            KeyCode.LeftArrow,
+            KeyCode.D,
+            KeyCode.RightArrow,
+            KeyCode.Tab,
+            KeyCode.Return,
+            KeyCode.Backspace, 
+            KeyCode.P
+        );
+    }
+
     public static bool HoldingUp() {
         return Input.GetKey(up_p) || Input.GetKey(up_s);
     }
