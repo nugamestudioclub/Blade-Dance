@@ -23,7 +23,7 @@ public static class KeybindManager
     private static KeyCode settingsMenu = KeyCode.Tab;
     private static KeyCode menuConfirm = KeyCode.Return;
     private static KeyCode exitKey = KeyCode.Backspace;
-    private static KeyCode pauseKey = KeyCode.Escape;
+    private static KeyCode pauseKey = KeyCode.P;
 
     // Getter for array of all keybinds
     public static (string bindName, KeyCode key)[] Keybinds => new[]
@@ -189,36 +189,21 @@ public static class KeybindManager
         string bindName,
         KeyCode newKey
     ) {
-        if (bindName == "up_p") {
-            up_p = newKey;
-        } else if (bindName == "up_s") {
-            up_s = newKey;
-        } else if (bindName == "down_p") {
-            down_p = newKey;
-        } else if (bindName == "down_s") {
-            down_s = newKey;
-        } else if (bindName == "left_p") {
-            left_p = newKey;
-        } else if (bindName == "left_s") {
-            left_s = newKey;
-        } else if (bindName == "right_p") {
-            right_p = newKey;
-        } else if (bindName == "right_s") {
-            right_s = newKey;
-        } else if (bindName == "settingsMenu") {
-            settingsMenu = newKey;
-        } else if (bindName == "menuConfirm") {
-            menuConfirm = newKey;
-        } else if (bindName == "exitKey") {
-            exitKey = newKey;
-        } else if (bindName == "pauseKey") {
-            pauseKey = newKey;
-        } else {
+        KeyCode[] binds = {
+            up_p, up_s, down_p, down_s, left_p, left_s, right_p, right_s, settingsMenu, menuConfirm, exitKey, pauseKey
+        };
+        string[] bindNames = {
+            "up_p", "up_s", "down_p", "down_s", "left_p", "left_s", "right_p", "right_s", "settingsMenu", "menuConfirm", "exitKey", "pauseKey"
+        };
+
+        if (!bindNames.Contains(bindName)) {
             return false; // Invalid bind name
         }
 
+        binds[Array.IndexOf(bindNames, bindName)] = newKey;
+
         return SetKeybinds(
-            up_p, up_s, down_p, down_s, left_p, left_s, right_p, right_s, settingsMenu, menuConfirm, exitKey, pauseKey
+            binds[0], binds[1], binds[2], binds[3], binds[4], binds[5], binds[6], binds[7], binds[8], binds[9], binds[10], binds[11]
         ); // This will also save to JSON
     }
 

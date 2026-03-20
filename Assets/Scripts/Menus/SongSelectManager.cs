@@ -58,6 +58,7 @@ public class SongSelectManager : MonoBehaviour
 
     private bool awaitingSetKeybind = false; // If true, next key press will be used to set a keybind.
     private string bindNameToSet = "";       // Name of the keybind currently being set (if applicable).
+    private string previousBindName = "";    // Previous keybind name, used to revert back if needed.
     private TMP_Text buttonTextToSet = null; // Button text we need to update after setting the keybind
 
     // Start is called before the first frame update
@@ -112,7 +113,7 @@ public class SongSelectManager : MonoBehaviour
             // Positioning
             RectTransform rect = nextPanel.GetComponent<RectTransform>();
             Vector2 pos = rect.anchoredPosition;
-            pos.y += (5 - idx) * 80;
+            pos.y += 30 + ((5 - idx) * 80);
             rect.anchoredPosition = pos;
             
             // Button click listener
@@ -138,6 +139,9 @@ public class SongSelectManager : MonoBehaviour
         awaitingSetKeybind = true;
         bindNameToSet = bindName;
         buttonTextToSet = buttonText;
+
+        previousBindName = buttonText.text;
+        buttonText.SetText("Press a key...");
         return true;
     }
 
@@ -242,6 +246,9 @@ public class SongSelectManager : MonoBehaviour
                             buttonTextToSet.SetText(keyCode.ToString());
                         } else {
                             Debug.LogError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
+                            NotificationManager.NotifyError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
+                            buttonTextToSet.SetText(previousBindName); // Revert to previous keybind name on failure
+
                             // TODO: Might want to show an error notification in the UI if this happens.
                         }
                         break;
