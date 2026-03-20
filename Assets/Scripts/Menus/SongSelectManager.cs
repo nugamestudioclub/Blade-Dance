@@ -254,7 +254,7 @@ public class SongSelectManager : MonoBehaviour
 
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
-            SceneManager.LoadScene("Gameplay 1");
+            SceneManager.LoadScene("GameplayV2 Pause");
         }
     }
 }
