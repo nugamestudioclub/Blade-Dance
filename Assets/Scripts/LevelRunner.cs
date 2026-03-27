@@ -19,6 +19,8 @@ public class LevelRunner : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject enemyPrefab;
+    
+    private int timelineMs;
 
     //public AudioClip countoffSFX;
 
@@ -123,10 +125,20 @@ public class LevelRunner : MonoBehaviour
 
         if (activated)
         {
-            secondPosition = (float)(AudioSettings.dspTime - startDspTime);
+            /*secondPosition = (float)(AudioSettings.dspTime - startDspTime);
             beatPosition = secondPosition / secPerBeat;
             levelContent.AtBeat(beatPosition - beatsDelay);
-            //levelContent.AtBeat(beatPosition);
+            levelContent.AtBeat(beatPosition);
+            */
+            
+            
+            emitter.EventInstance.getTimelinePosition(out timelineMs);
+            secondPosition = timelineMs / 1000f;
+            beatPosition = secondPosition / secPerBeat;
+
+            delayToTest = beatsDelay;
+            
+            levelContent.AtBeat(beatPosition - beatsDelay);
 
             if (levelContent.IsLevelComplete())
             {

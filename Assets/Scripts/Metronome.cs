@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class Metronome : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Metronome : MonoBehaviour
     float secPerBeat;
 
     AudioSource[] audioSources;
+    
+    [SerializeField] private EventReference metronomeSfx;
 
     int nextSourceToUse = 0;
     int numBeatsSoFar = 0;
@@ -16,6 +20,7 @@ public class Metronome : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         audioSources = transform.GetComponentsInChildren<AudioSource>();
     }
 
@@ -35,7 +40,8 @@ public class Metronome : MonoBehaviour
 
             if (time + 0.25f > (numBeatsSoFar+1) * secPerBeat)
             {
-                audioSources[nextSourceToUse].PlayScheduled(startDspTime + (numBeatsSoFar+1) * secPerBeat);
+                //audioSources[nextSourceToUse].PlayScheduled(startDspTime + (numBeatsSoFar+1) * secPerBeat);
+                RuntimeManager.PlayOneShot(metronomeSfx);
                 Debug.Log("Click Scheduled for " + nextSourceToUse + " at " + (startDspTime + (numBeatsSoFar + 1) * secPerBeat));
                 nextSourceToUse = (nextSourceToUse + 1) % 8;
                 numBeatsSoFar += 1;

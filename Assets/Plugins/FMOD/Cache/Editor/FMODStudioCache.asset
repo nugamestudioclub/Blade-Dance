@@ -53,7 +53,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 148633
+  Length: 145190
 --- !u!114 &-7182950671034472636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639084229504775565
+  lastModified: 639090290969600347
   FileSizes:
   - Name: Desktop
-    Value: 33822464
+    Value: 33824416
   Exists: 1
 --- !u!114 &-7095080314375269808
 MonoBehaviour:
@@ -100,7 +100,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 222593
+  Length: 220854
 --- !u!114 &-6952776854944608393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639084229504786859
+  lastModified: 639090290969612839
   FileSizes:
   - Name: Desktop
     Value: 1562
@@ -268,7 +268,7 @@ MonoBehaviour:
   - {fileID: -7182950671034472636}
   StringsBanks:
   - {fileID: -6952776854944608393}
-  cacheTime: 639084229504786859
+  cacheTime: 639090290969612839
   cacheVersion: 131621
 --- !u!114 &320528462792983696
 MonoBehaviour:

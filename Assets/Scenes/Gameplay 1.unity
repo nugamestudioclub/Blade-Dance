@@ -5796,6 +5796,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be42bdba3c5324c18a1d1471d7cf62c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  metronomeSfx:
+    Guid:
+      Data1: -2062629655
+      Data2: 1214601637
+      Data3: 780610994
+      Data4: -1022021253
+    Path: event:/SFX/Metronome-85688
 --- !u!1 &1526755817
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +7095,7 @@ MonoBehaviour:
   noteSpeed: 5
   beatsDelay: 8
   songBpm: 170
+  delayToTest: 0
   musicSourceFMOD:
     Guid:
       Data1: -454634238
