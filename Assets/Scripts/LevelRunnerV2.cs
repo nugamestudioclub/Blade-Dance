@@ -105,7 +105,7 @@ public class LevelRunnerV2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu_keybinds_branch");
         }
 
         if (activated)
