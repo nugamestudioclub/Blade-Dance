@@ -29,19 +29,19 @@ public class PlayerMover : MonoBehaviour
         
         Vector3 targetInput = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.W))
+        if (KeybindManager.HoldingUp())
         {
             targetInput += Vector3.up;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (KeybindManager.HoldingDown())
         {
             targetInput += Vector3.down;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (KeybindManager.HoldingLeft())
         {
             targetInput += Vector3.left;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (KeybindManager.HoldingRight())
         {
             targetInput += Vector3.right;
         }
@@ -56,11 +56,11 @@ public class PlayerMover : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                if (KeybindManager.PressedLeft() || KeybindManager.PressedRight())
                 {
                     targetInput.y = 0f;
                 }
-                else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+                else if (KeybindManager.PressedUp() || KeybindManager.PressedDown())
                 {
                     targetInput.x = 0f;
                 }
