@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PauseFunctionality : MonoBehaviour
 {
-    private static KeyCode PAUSE_KEY = KeyCode.P;
     private static bool isPaused = false;
 
     // Returns true if the game is paused.
@@ -47,7 +46,7 @@ public class PauseFunctionality : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(PAUSE_KEY))
+        if (KeybindManager.PressedPause())
         {
             TogglePause();
         }

@@ -254,6 +254,13 @@ public class SongSelectManager : MonoBehaviour
             if (Input.anyKeyDown) {
                 foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) {
                     if (Input.GetKeyDown(keyCode)) {
+                        if (keyCode == KeyCode.Mouse0) {
+                            NotificationManager.NotifyError("Left click cannot be used as a keybind.");
+                            buttonTextToSet.SetText(previousBindName);
+                            awaitingSetKeybind = false;
+                            bindNameToSet = "";
+                            return;
+                        }
                         // Set the new keybind in the KeybindManager
                         bool success = KeybindManager.SetKeybind(bindNameToSet, keyCode);
                         awaitingSetKeybind = false;
