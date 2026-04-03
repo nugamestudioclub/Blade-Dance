@@ -26,7 +26,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 225528
+  Length: 228108
 --- !u!114 &-7645830693305512424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 145190
+  Length: 148396
 --- !u!114 &-7182950671034472636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639102381970645150
+  lastModified: 639108414064857312
   FileSizes:
   - Name: Desktop
-    Value: 33824416
+    Value: 33835232
   Exists: 1
 --- !u!114 &-7095080314375269808
 MonoBehaviour:
@@ -100,7 +100,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 220854
+  Length: 222593
 --- !u!114 &-6952776854944608393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,12 +116,12 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639102381970682262
+  lastModified: 639108414064870910
   FileSizes:
   - Name: Desktop
-    Value: 1562
+    Value: 1560
   Exists: 1
---- !u!114 &-4826748390906366884
+--- !u!114 &-6237018017861053429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Songs/Kyoufuu All Back
+  m_Name: event:/Songs/KyoufuuAllBack
   m_EditorClassIdentifier: 
-  Path: event:/Songs/Kyoufuu All Back
+  Path: event:/Songs/KyoufuuAllBack
   Guid:
     Data1: -1744150034
     Data2: 1188373355
@@ -147,7 +147,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 136407
+  Length: 138413
 --- !u!114 &-3727302840680065878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,15 +260,15 @@ MonoBehaviour:
   - {fileID: 8186771498700236779}
   - {fileID: 1589690726003358105}
   - {fileID: 6361963966265683443}
-  - {fileID: -4826748390906366884}
   - {fileID: -1028003416672526855}
   - {fileID: 1042751679158868333}
+  - {fileID: -6237018017861053429}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7182950671034472636}
   StringsBanks:
   - {fileID: -6952776854944608393}
-  cacheTime: 639102381970682262
+  cacheTime: 639108414064870910
   cacheVersion: 131621
 --- !u!114 &320528462792983696
 MonoBehaviour:
@@ -296,7 +296,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 332460
+  Length: 335369
 --- !u!114 &526657357264086586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 120946
+  Length: 123716
 --- !u!114 &1589690726003358105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,4 +566,4 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 252778
+  Length: 255304
