@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu_keybinds_branch.unity
     guid: be52667ae1deae3459e39b023e206870
+  - enabled: 1
+    path: Assets/Scenes/GameplayV2 Pause.unity
+    guid: d65b868d1a7f34320992ab1d69e75c18
   m_configObjects: {}
