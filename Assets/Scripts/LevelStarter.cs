@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelStarter : MonoBehaviour
 {
-    public LevelRunner runner;
+    public LevelRunnerV2 runner;
 
     private Dictionary<string, Vector3> directionConversion;
 

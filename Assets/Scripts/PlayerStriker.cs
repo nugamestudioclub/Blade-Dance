@@ -22,6 +22,11 @@ public class PlayerStriker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseFunctionality.getIsPaused())
+        {
+            return;
+        }
+        
         keyInputs[0] = KeybindManager.PressedUp();
         keyInputs[1] = KeybindManager.PressedDown();
         keyInputs[2] = KeybindManager.PressedLeft();
@@ -109,7 +114,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(minY - 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -140,7 +145,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(maxY + 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -171,7 +176,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(maxX + 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -202,7 +207,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(minX - 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 }
