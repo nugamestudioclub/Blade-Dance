@@ -9,12 +9,11 @@ Shader "UI/SineWaveImage_Fixed"
         _Freq ("Wave Frequency", Float) = 10
         _Speed ("Wave Speed", Float) = 1
         
-
         _Bins ("X Bins", Float) = 12
 
         _GapCenter ("Gap Center (0-1)", Range(0,1)) = 0.5
-        _GapSize   ("Gap Size", Range(0,1)) = 0.3
-        _GapSoft   ("Gap Softness", Range(0,0.2)) = 0.01
+        _GapSize ("Gap Size", Range(0,1)) = 0.3
+        _GapSoft ("Gap Softness", Range(0,0.2)) = 0.01
 
         _GradA ("Gradient Edge Color", Color) = (1,1,1,1)
         _GradB ("Gradient Center Color", Color) = (0,0,0,1)
@@ -27,8 +26,7 @@ Shader "UI/SineWaveImage_Fixed"
         _Height ("Max Bar Height", Range(0,1)) = 0.25
         _Steps ("Vertical Steps", Float) = 16
 
-
-
+        _PixelCount("Pixelation Count", Float) = 500
 
     }
 
@@ -57,16 +55,16 @@ Shader "UI/SineWaveImage_Fixed"
 
             struct appdata
             {
-                float4 vertex   : POSITION;
-                float4 color    : COLOR;
-                float2 uv       : TEXCOORD0;
+                float4 vertex : POSITION;
+                float4 color : COLOR;
+                float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                fixed4 color  : COLOR;
-                float2 uv     : TEXCOORD0;
+                fixed4 color : COLOR;
+                float2 uv : TEXCOORD0;
             };
 
             sampler2D _MainTex;
@@ -82,10 +80,9 @@ Shader "UI/SineWaveImage_Fixed"
             float _BandCount;
             float _Height;
             float _Steps;
+            float _PixelCount;
 
-            
-
-
+        
             v2f vert (appdata v)
             {
                 v2f o;
@@ -99,49 +96,46 @@ Shader "UI/SineWaveImage_Fixed"
             {
                 float2 uv = i.uv;
 
-                // --------- 1) Pick which band (bin) this pixel belongs to ----------
-                float bandCount = max(1.0, _BandCount);
-                float _x = (uv.x-0.5f)<0? uv.x : 1.0f - uv.x;
-                float idx = floor(_x * bandCount);           // 0..bandCount-1
-                float u = (idx + 0.5) / bandCount;             // center sample for that band
+               
+                float pc = max(1.0, _PixelCount);
+                uv.y = floor(uv.y * pc) / pc;
 
-                // --------- 2) Read amplitude for this band (0..1) from the 1D bands texture ----------
-                float a = tex2D(_BandsTex, float2(u, 0.5)).r;
+                // Pick band.
+                float bandCount = max(1.0, _BandCount);
+                float _x = (uv.x - 0.5f) < 0 ? uv.x : 1.0f - uv.x;
+                float idx = floor(_x * bandCount);
+                float u = (idx + 0.5) / bandCount;
+
+                // Read Amplitude
+                float a = tex2D(_BandsTex, float2(u * 2.0, 0.5)).r;
                 a = saturate(a);
 
-                // Optional: make "stacked blocks" like classic equalizers
-                float steps = max(1.0, _Steps);
-                a = floor(a * steps/2) / steps;
+                // Quantize
+                float maxPixels = pc * _Height * 0.5; 
+                float aPixels = floor(a * maxPixels);        
+                float bar = aPixels / pc;                 
 
-                // Convert amplitude into a bar thickness (in UV units)
-                float bar = a * _Height*0.5f;                       // e.g. _Height = 0.25 means max 25% from top/bottom
-
-                // --------- 3) Build top/bottom bar mask ----------
-                // top bar occupies [1-bar, 1], bottom bar occupies [0, bar]
+                // Bar
                 float topMask = step(1.0 - bar, uv.y);
                 float botMask = step(uv.y, bar);
-                float barsMask = saturate(topMask + botMask);  // 0..1
+                float barsMask = saturate(topMask + botMask);
 
-                // --------- 4) Center gap mask (transparent in the middle band, soft edges) ----------
+                // Gap
                 float dist = abs(uv.y - _GapCenter);
                 float halfGap = _GapSize * 0.5;
                 float gapMask = smoothstep(halfGap - _GapSoft, halfGap + _GapSoft, dist);
 
-                // --------- 5) Mirrored gradient (top->center and bottom->center) ----------
-                float t = saturate(abs(uv.y - 0.5) * 2.0);   // 0 at center, 1 at rims//2.0
+                // Gradient.
+                float t = saturate(abs(uv.y - 0.5) * 2.0);
                 t = pow(t, _GradPow);
                 fixed3 gradRGB = lerp(_GradB.rgb, _GradA.rgb, t);
 
-                // --------- 6) Final color ----------
-                // If you want to ignore the sprite texture and just draw the visualizer color:
                 fixed4 col = fixed4(gradRGB, 1.0);
-
-                col *= i.color; // keep UI tint/vertex color
+                col *= i.color;
                 col.a *= barsMask * gapMask;
 
                 return col;
             }
-
 
             ENDCG
         }

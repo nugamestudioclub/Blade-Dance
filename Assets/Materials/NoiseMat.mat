@@ -86,6 +86,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PixelCount: 200
+    - _PixelationScale: 0.01
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 1
@@ -100,4 +102,5 @@ Material:
     - _GradA: {r: 1, g: 0, b: 0.88322544, a: 1}
     - _GradB: {r: 1, g: 0, b: 0, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PixelationScale: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
