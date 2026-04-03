@@ -19,6 +19,8 @@ public class SongSelectManager : MonoBehaviour
 
     public GameObject songPanelPrefab;
 
+    public GameObject settingsKeybindPrefab;
+
     public GameObject selectPanel;
 
     // measured in pixels per second
@@ -49,6 +51,17 @@ public class SongSelectManager : MonoBehaviour
 
     private GameObject startButton;
 
+    private Transform settingsMenuObj;
+    private Transform settingsAreaContent;
+    CanvasGroup settingsMenuCanvasGroup;
+    private bool settingsMenuOpen = false;
+
+    private bool awaitingSetKeybind = false; // If true, next key press will be used to set a keybind.
+    private string bindNameToSet = "";       // Name of the keybind currently being set (if applicable).
+    private string previousBindName = "";    // Previous keybind name, used to revert back if needed.
+    private TMP_Text buttonTextToSet = null; // Button text we need to update after setting the keybind
+    private Dictionary<string, TMP_Text> keybindNamesToButtons = new Dictionary<string, TMP_Text>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +72,10 @@ public class SongSelectManager : MonoBehaviour
 
         scrollAreaContent = this.transform.Find("ScrollArea").Find("Content");
         scrollAreaContentRect = scrollAreaContent.GetComponent<RectTransform>();
+
+        settingsMenuObj = this.transform.Find("SettingsArea");
+        settingsAreaContent = settingsMenuObj.Find("Content");
+        settingsMenuCanvasGroup = settingsMenuObj.GetComponent<CanvasGroup>();
 
         Transform songDetail = this.transform.Find("SongDetail");
         songDetailImage = songDetail.Find("Image").GetComponent<Image>();
@@ -81,8 +98,69 @@ public class SongSelectManager : MonoBehaviour
             infoPanel.Find("Difficulties").GetComponent<TMP_Text>().SetText("Difficulty: " + song.GetDifficultyList());
         }
 
+        // Settings menu setup
+        int idx = 0;
+        string[] keybindNames = {
+            "up_p", "up_s", "down_p", "down_s", "left_p", "left_s", "right_p", "right_s", "settingsMenu", "menuConfirm", "exitKey", "pauseKey"
+        };
+        foreach (var (name, keyCode) in KeybindManager.Keybinds)
+        {
+            // Init from prefab
+            GameObject nextPanel = Instantiate(settingsKeybindPrefab, settingsAreaContent);
+            nextPanel.transform.Find("BindName").GetComponent<TMP_Text>().SetText(name);
+            TMP_Text buttonTmpElem = nextPanel.transform.Find("Button").transform.Find("KeyName").GetComponent<TMP_Text>();
+            buttonTmpElem.SetText(keyCode.ToString());
+            keybindNamesToButtons.Add(name, buttonTmpElem); // Store reference to the button text for this keybind for easy updating when the keybind is changed
+
+            // Positioning
+            RectTransform rect = nextPanel.GetComponent<RectTransform>();
+            Vector2 pos = rect.anchoredPosition;
+            pos.y += 30 + ((5 - idx) * 80);
+            rect.anchoredPosition = pos;
+            
+            // Button click listener
+            string argument = keybindNames[idx];
+            Button button = nextPanel.transform.Find("Button").GetComponent<Button>();
+            button.onClick.AddListener(() => startSetKeybind(argument, buttonTmpElem));
+
+            idx++;
+        }
+        // Reset to defaults button listener
+        settingsAreaContent.transform.Find("KeybindDefaults").GetComponent<Button>().onClick.AddListener(() => {
+            if (KeybindManager.ResetKeybindsToDefault()) {
+                // Update all button texts to reflect default keybinds
+                int i = 0;
+                foreach (var (name, keyCode) in KeybindManager.Keybinds)
+                {
+                    keybindNamesToButtons[name].SetText(keyCode.ToString());
+                    i++;
+                }
+            }
+            else {
+                Debug.LogError("Failed to reset keybinds to default. JSON save failure.");
+                NotificationManager.NotifyError("Failed to reset keybinds to default. JSON save failure.");
+            }
+        });
+
+        // Start with settings hidden
+        HideSettingsMenu();
+
         scrollAreaContentRect.anchoredPosition = new Vector2(0f, (track.songs.Count - 1) * -112.5f);
         SelectTrack(0);
+    }
+
+    public bool startSetKeybind(string bindName, TMP_Text buttonText) {
+        if (awaitingSetKeybind) {
+            return false; // Already waiting for a keybind, ignore this request
+        }
+
+        awaitingSetKeybind = true;
+        bindNameToSet = bindName;
+        buttonTextToSet = buttonText;
+
+        previousBindName = buttonText.text;
+        buttonText.SetText("Press a key...");
+        return true;
     }
 
     // assumes that we want to treat index beyond the track list bounds as edge selections
@@ -149,13 +227,75 @@ public class SongSelectManager : MonoBehaviour
         SelectLevel(selectedLevel - 1);
     }
 
+    private void HideSettingsMenu()
+    {
+        settingsMenuCanvasGroup.alpha = 0f;
+        settingsMenuCanvasGroup.interactable = false;
+        settingsMenuCanvasGroup.blocksRaycasts = false;
+    }
+
+    private void ShowSettingsMenu()
+    {
+        settingsMenuCanvasGroup.alpha = 1f;
+        settingsMenuCanvasGroup.interactable = true;
+        settingsMenuCanvasGroup.blocksRaycasts = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        // Scrolling the song menu
         scrollAreaContentRect.anchoredPosition = Vector2.MoveTowards(scrollAreaContentRect.anchoredPosition, scrollAreaTargetPosition, scrollSpeed * Time.deltaTime);
         levelSelectPanel.anchoredPosition = Vector2.MoveTowards(levelSelectPanel.anchoredPosition, levelSelectTargetPosition, scrollSpeed * Time.deltaTime);
 
-        if (menuSection == MenuSection.SongSelect)
+        // Setting keybinds, if currently in the set keybinds menu
+        if (awaitingSetKeybind) {
+            // Check for any key press
+            if (Input.anyKeyDown) {
+                foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode))) {
+                    if (Input.GetKeyDown(keyCode)) {
+                        if (keyCode == KeyCode.Mouse0) {
+                            NotificationManager.NotifyError("Left click cannot be used as a keybind.");
+                            buttonTextToSet.SetText(previousBindName);
+                            awaitingSetKeybind = false;
+                            bindNameToSet = "";
+                            return;
+                        }
+                        // Set the new keybind in the KeybindManager
+                        bool success = KeybindManager.SetKeybind(bindNameToSet, keyCode);
+                        awaitingSetKeybind = false;
+                        bindNameToSet = "";
+
+                        if (success) {
+                            buttonTextToSet.SetText(keyCode.ToString());
+                        } else {
+                            Debug.LogError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
+                            NotificationManager.NotifyError("Failed to set keybind. Possible duplicate keybind or JSON save failure.");
+                            buttonTextToSet.SetText(previousBindName); // Revert to previous keybind name on failure
+                        }
+                        break;
+                    }
+                }
+            }
+
+            // Skip the rest of the update loop while waiting for keybind input
+            return;
+        }
+
+        // Setting menu; prevents all other actions
+        if (KeybindManager.PressedSettingsMenu()) {
+            settingsMenuOpen = !settingsMenuOpen;
+            if (settingsMenuOpen) {
+                ShowSettingsMenu();
+            } else {
+                HideSettingsMenu();
+            }
+        }
+
+        if (settingsMenuOpen) {
+            // Nothing needed here for now since the buttons handle their own input
+        }
+        else if (menuSection == MenuSection.SongSelect)
         {
             InputSongSelect();
         }
@@ -171,12 +311,12 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputSongSelect()
     {
-        if (Input.GetKeyUp(KeyCode.W) && !cancelReleasedFromLevelSelect)
+        if (KeybindManager.PressedUp() && !cancelReleasedFromLevelSelect)
         {
             cancelReleasedFromLevelSelect = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Return))
+        if (KeybindManager.PressedRight() || KeybindManager.PressedConfirm())
         {
             menuSection = MenuSection.LevelSelect;
             levelSelectPanel.gameObject.SetActive(true);
@@ -185,11 +325,11 @@ public class SongSelectManager : MonoBehaviour
             levelSelectTargetPosition = startPosition;
             SelectLevel(0);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (KeybindManager.PressedDown())
         {
             IncrementTrack();
         }
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (KeybindManager.PressedUp())
         {
             DecrementTrack();
         }
@@ -197,11 +337,11 @@ public class SongSelectManager : MonoBehaviour
         {
             if (scrollAreaContentRect.anchoredPosition == scrollAreaTargetPosition && cancelReleasedFromLevelSelect)
             {
-                if (Input.GetKey(KeyCode.S))
+                if (KeybindManager.HoldingDown())
                 {
                     IncrementTrack();
                 }
-                else if (Input.GetKey(KeyCode.W))
+                else if (KeybindManager.HoldingUp())
                 {
                     DecrementTrack();
                 }
@@ -211,7 +351,7 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputLevelSelect()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedUp() || KeybindManager.PressedExit())
         {
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
@@ -219,15 +359,15 @@ public class SongSelectManager : MonoBehaviour
             levelSelectPanel.gameObject.SetActive(false);
             cancelReleasedFromLevelSelect = false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (KeybindManager.PressedRight())
         {
             IncrementLevel();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (KeybindManager.PressedLeft())
         {
             DecrementLevel();
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Return))
+        else if (KeybindManager.PressedDown() || KeybindManager.PressedConfirm())
         {
             menuSection = MenuSection.LevelConfirm;
             startButton.SetActive(true);
@@ -238,7 +378,7 @@ public class SongSelectManager : MonoBehaviour
 
     private void InputLevelConfirm()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedUp() || KeybindManager.PressedExit())
         {
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
@@ -254,7 +394,7 @@ public class SongSelectManager : MonoBehaviour
 
             AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, 1.0f);
 
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("GameplayV2 Pause");
         }
     }
 }

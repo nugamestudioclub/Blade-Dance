@@ -6,18 +6,14 @@ public class PlayerStriker : MonoBehaviour
 {
     public Collider2D[] petals;
 
-    private KeyCode[] keyInputs;
+    private bool[] keyInputs;
 
     private ContactFilter2D enemyFilter;
 
     // Start is called before the first frame update
     void Start()
     {
-        keyInputs = new KeyCode[4];
-        keyInputs[0] = KeyCode.W;
-        keyInputs[1] = KeyCode.S;
-        keyInputs[2] = KeyCode.A;
-        keyInputs[3] = KeyCode.D;
+        keyInputs = new bool[4];
 
         enemyFilter = new ContactFilter2D().NoFilter();
         enemyFilter.SetLayerMask(LayerMask.GetMask("Enemy"));
@@ -26,33 +22,43 @@ public class PlayerStriker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseFunctionality.getIsPaused())
+        {
+            return;
+        }
+        
+        keyInputs[0] = KeybindManager.PressedUp();
+        keyInputs[1] = KeybindManager.PressedDown();
+        keyInputs[2] = KeybindManager.PressedLeft();
+        keyInputs[3] = KeybindManager.PressedRight();
+
+        // Make sure only one key is pressed
         int keyCount = 0;
         for (int i = 0; i < 4; i++)
         {
-            if (Input.GetKeyDown(keyInputs[i]))
+            if (keyInputs[i])
             {
                 keyCount += 1;
             }
         }
-
         if (keyCount != 1)
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (KeybindManager.PressedUp())
         {
             UpPressed();
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (KeybindManager.PressedDown())
         {
             DownPressed();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (KeybindManager.PressedLeft())
         {
             LeftPressed();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (KeybindManager.PressedRight())
         {
             RightPressed();
         }
@@ -108,7 +114,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(minY - 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -139,7 +145,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(maxY + 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -170,7 +176,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(maxX + 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 
@@ -201,7 +207,7 @@ public class PlayerStriker : MonoBehaviour
         if (minIndex != -1)
         {
             int points = PointValue((0.5f - Mathf.Abs(minX - 1f)) * 2f);
-            overlaps[minIndex].gameObject.GetComponent<EnemyMover>().HitPlayer(points);
+            overlaps[minIndex].gameObject.GetComponent<EnemyMoverV2>().HitPlayer(points);
         }
     }
 }

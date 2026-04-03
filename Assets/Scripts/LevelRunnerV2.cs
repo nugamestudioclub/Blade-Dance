@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using System.Linq;
 
-public class LevelRunner : MonoBehaviour
+public class LevelRunnerV2 : MonoBehaviour
 {
     private int hits = 0;
     private int misses = 0;
@@ -41,15 +43,21 @@ public class LevelRunner : MonoBehaviour
 
     private AudioSource musicSource;
 
-    private LevelBase levelContent;
+    private LevelLoadedV2 levelContent;
     public BeatMarkerPlacer markerPlacer;
     public Metronome metronome;
 
+    // the list of all enemies rendered onto the screen this frame
+    private List<EnemyMoverV2> activeEnemies = new List<EnemyMoverV2>();
+    // the list of all bullets rendered onto the screen this frame
+    private List<BulletMoverV2> activeBullets = new List<BulletMoverV2>();
+
     private bool activated = false;
-    private float timeDelayToFinish;
+    private float beatDelayToFinish;
 
     public GameObject endScreen;
 
+    // Start is called before the first frame update
     public void LaunchRunner(List<Note> content)
     {
         if (content.Count < 1)
@@ -76,7 +84,7 @@ public class LevelRunner : MonoBehaviour
         secPerBeat = 60f / songBpm;
         startDspTime = (float)AudioSettings.dspTime;
 
-        levelContent = new LevelLoaded(content);
+        levelContent = new LevelLoadedV2(content);
         levelContent.Begin(this, edgeDistance + 1f, noteSpeed, secPerBeat);
 
         musicSource.PlayScheduled(startDspTime + (beatsDelay + 1) * secPerBeat);
@@ -89,27 +97,35 @@ public class LevelRunner : MonoBehaviour
 
         activated = true;
 
-        timeDelayToFinish = (edgeDistance * 2f + 4f) / noteSpeed;
+        beatDelayToFinish = ((edgeDistance * 2f + 4f) / noteSpeed) / secPerBeat;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (KeybindManager.PressedExit())
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu_keybinds_branch");
         }
 
         if (activated)
         {
-            secondPosition = (float)(AudioSettings.dspTime - startDspTime); // Tracks time since start. Second as in seconds, not 2nd.
+            secondPosition = (float)(AudioSettings.dspTime - startDspTime);
             beatPosition = secondPosition / secPerBeat;
-            levelContent.AtBeat(beatPosition - beatsDelay);
 
-            if (levelContent.IsLevelComplete())
+            // based on level content, spawn whatever new notes are needed for this frame's render
+            levelContent.AtBeat(beatPosition - beatsDelay);
+            // update all active note positions this frame based on beatPosition
+            UpdateAllNotePositions(beatPosition - beatsDelay);
+            // process the final positions of all notes to resolve game mechanics
+            DeleteBoundedNotes();
+
+            // if (levelContent.IsLevelComplete() && levelContent.GetBeatFinishedAt() + beatDelayToFinish <= beatPosition)
+            if (levelContent.IsLevelComplete() && !activeEnemies.Any() && !activeBullets.Any())
             {
                 activated = false;
-                Invoke("EndLevel", timeDelayToFinish);
+                // EndLevel();
+                Invoke("EndLevel", 2f);
             }
         }
     }
@@ -120,6 +136,104 @@ public class LevelRunner : MonoBehaviour
         endScreen.SetActive(true);
         endScreen.GetComponent<LevelEnder>().Populate(hits, hits + misses);
     }
+
+    public void AddEnemy(Enemy nextEnemy)
+    {
+        GameObject nextSpawn = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity);
+        EnemyMoverV2 nextMover = nextSpawn.GetComponent<EnemyMoverV2>();
+        nextMover.FindRunner();
+        nextMover.SetProperties(nextEnemy.direction, -1f * nextEnemy.direction, secPerBeat * noteSpeed, nextEnemy.targetBeat, centerBounds);
+        activeEnemies.Add(nextMover);
+    }
+
+    public void AddBullet(Bullet nextBullet)
+    {
+        GameObject nextSpawn = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
+        BulletMoverV2 nextMover = nextSpawn.GetComponent<BulletMoverV2>();
+        nextMover.FindRunner();
+        // replace .zero with the displacement dependent on direction
+        // nextBullet.offset * 
+        Vector3 offsetDirection;
+        if (nextBullet.direction.x != 0 && nextBullet.direction.y != 0)
+        {
+            if (nextBullet.direction.x + nextBullet.direction.y == 0)
+            {
+                offsetDirection = (Vector3.up + Vector3.right) * 0.5f;
+            }
+            else
+            {
+                offsetDirection = (Vector3.up + Vector3.left) * 0.5f;
+            }
+        }
+        else
+        {
+            if (nextBullet.direction.x == 0)
+            {
+                offsetDirection = Vector3.right;
+            }
+            else
+            {
+                offsetDirection = Vector3.up;
+            }
+        }
+        offsetDirection *= nextBullet.offset;
+
+        nextMover.SetProperties(offsetDirection, -1f * nextBullet.direction, secPerBeat * noteSpeed, nextBullet.targetBeat, killBounds);
+        activeBullets.Add(nextMover);
+    }
+
+    public void UpdateAllNotePositions(float beat)
+    {
+        foreach (EnemyMoverV2 enemy in activeEnemies)
+        {
+            enemy.UpdatePosition(beat);
+        }
+        foreach (BulletMoverV2 bullet in activeBullets)
+        {
+            bullet.UpdatePosition(beat);
+        }
+    }
+
+    public void DeleteBoundedNotes()
+    {
+        // enemy list
+        List<int> removeIndexes = new List<int>();
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            bool enemyRemoved = activeEnemies[i].RemoveAtBounds();
+            if (enemyRemoved) 
+            {
+                removeIndexes.Add(i);
+            }
+        }
+
+        int indexDisplacement = 0;
+        foreach (int index in removeIndexes)
+        {
+            activeEnemies.RemoveAt(index - indexDisplacement);
+            indexDisplacement += 1;
+        }
+
+        // bullet list
+        removeIndexes = new List<int>();
+        for (int i = 0; i < activeBullets.Count; i++)
+        {
+            bool bulletRemoved = activeBullets[i].RemoveAtBounds();
+            if (bulletRemoved)
+            {
+                removeIndexes.Add(i);
+            }
+        }
+
+        indexDisplacement = 0;
+        foreach (int index in removeIndexes)
+        {
+            activeBullets.RemoveAt(index - indexDisplacement);
+            indexDisplacement += 1;
+        }
+    }
+
+
 
     void SpawnRandomBullet()
     {
@@ -294,9 +408,22 @@ public class LevelRunner : MonoBehaviour
         hitLabel.SetText("Hits: " + hits);
     }
 
+    public void AddHit(EnemyMoverV2 enemyMover, int points)
+    {
+        hits += 1;
+        hitLabel.SetText("Hits: " + hits);
+        activeEnemies.Remove(enemyMover);
+    }
+
     public void AddHit()
     {
         AddHit(1);
+    }
+
+    public void AddMiss(BulletMoverV2 bulletMover)
+    {
+        AddMiss();
+        activeBullets.Remove(bulletMover);
     }
 
     public void AddMiss()
