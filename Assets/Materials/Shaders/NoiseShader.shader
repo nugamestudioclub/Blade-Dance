@@ -117,7 +117,7 @@ Shader "UI/SineWaveImage_Fixed"
 
                 // Bar
                 float topMask = step(1.0 - bar, uv.y);
-                float botMask = step(uv.y, bar);
+                float botMask = step(uv.y, bar-0.01);
                 float barsMask = saturate(topMask + botMask);
 
                 // Gap
