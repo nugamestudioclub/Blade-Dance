@@ -6,7 +6,7 @@
 [LOG] OutputCoreAudio::init                    : Maximum hardware read size: 512 samples, Software buffer size: 512 samples, Number of software buffers: 4.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0x12a044e08 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0x1298eb608 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -17,39 +17,6 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0x12af1cd18, queue head = 0x11f968b98, queue count = 0
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0x13aecec08, queue head = 0x11f968b98, queue count = 1
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x12af1cd18
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x12af1cd18
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x13aecec08
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x13aecec08
-[LOG] SoundI::release                          : BadApple (0x12af14f88)
-[LOG] SoundI::release                          :     BadApple (0x12af1cb88)
-[LOG] SoundI::release                          :     BadApple (0x12af1cd18)
-[LOG] SoundI::release                          : BadApple (0x3b2b07b68)
-[LOG] SoundI::release                          :     BadApple (0x13aee17e8)
-[LOG] SoundI::release                          :     BadApple (0x13aecec08)
-[LOG] SoundI::release                          :  (0x39ad98e88)
-[LOG] SoundI::release                          :     MenuClick0 (0x339c14158)
-[LOG] SoundI::release                          :  (0x3bdafd518)
-[LOG] SoundI::release                          :     samurai-slash-6845 (0x13b8918f8)
-[LOG] SoundI::release                          :  (0x11feda2d8)
-[LOG] SoundI::release                          :     metronome-85688 (0x3416b39a8)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] ProfileClient::markForDead               : Closing client connection
-[ERR] FMOD_OS_Net_Read                         : read failed with errno 9
-[ERR] ProfileClient::recvThreadLoopFunction    : Recv thread loop returned 43
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
-[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -57,5 +24,3 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
