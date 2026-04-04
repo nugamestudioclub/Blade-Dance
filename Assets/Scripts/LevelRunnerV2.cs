@@ -103,7 +103,7 @@ public class LevelRunnerV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedExit())
         {
             SceneManager.LoadScene("MainMenu_keybinds_branch");
         }

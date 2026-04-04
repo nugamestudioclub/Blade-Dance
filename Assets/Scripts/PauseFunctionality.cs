@@ -6,6 +6,8 @@ public class PauseFunctionality : MonoBehaviour
 {
     private static bool isPaused = false;
 
+    public GameObject pauseMenu;
+
     // Returns true if the game is paused.
     public static bool getIsPaused()
     {
@@ -28,6 +30,7 @@ public class PauseFunctionality : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0;
         AudioListener.pause = true;
+        pauseMenu.SetActive(true);
     }
 
     void UnPause()
@@ -35,6 +38,7 @@ public class PauseFunctionality : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         AudioListener.pause = false;
+        pauseMenu.SetActive(false);
     }
 
     // Start is called before the first frame update
