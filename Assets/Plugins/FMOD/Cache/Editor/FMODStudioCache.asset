@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639114447749467416
+  lastModified: 639114458285764659
   FileSizes:
   - Name: Desktop
     Value: 33835552
@@ -116,7 +116,7 @@ MonoBehaviour:
   Path: Assets/Audio/BladeDance-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639114447749480747
+  lastModified: 639114458285783176
   FileSizes:
   - Name: Desktop
     Value: 1560
@@ -268,7 +268,7 @@ MonoBehaviour:
   - {fileID: -7182950671034472636}
   StringsBanks:
   - {fileID: -6952776854944608393}
-  cacheTime: 639114447749480747
+  cacheTime: 639114458285783176
   cacheVersion: 131621
 --- !u!114 &320528462792983696
 MonoBehaviour:
