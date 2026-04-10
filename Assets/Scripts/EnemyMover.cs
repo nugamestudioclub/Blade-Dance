@@ -12,6 +12,7 @@ public class EnemyMover : MonoBehaviour, IMover
     private Vector3 direction;
     private float speed;
     private Bounds killBounds;
+    private float attackDamage = 0.4f;
 
     //public AudioClip debugSound;
     //private bool debugCheck = false;
@@ -75,6 +76,7 @@ public class EnemyMover : MonoBehaviour, IMover
     {
         AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
         levelRunner.AddMiss();
+        levelRunner.ReduceHealth(attackDamage);
         Destroy(gameObject);
     }
 

@@ -8,6 +8,7 @@ public class LevelRunner : MonoBehaviour
 {
     private int hits = 0;
     private int misses = 0;
+    private float health = 1.0f;
 
     public TMP_Text hitLabel;
     public TMP_Text missLabel;
@@ -96,6 +97,7 @@ public class LevelRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene("MainMenu");
@@ -111,6 +113,17 @@ public class LevelRunner : MonoBehaviour
             {
                 activated = false;
                 Invoke("EndLevel", timeDelayToFinish);
+            }
+
+            if (health < 1.0f)
+            {
+                health += Time.deltaTime * 0.3f;
+            }
+
+            if (health <= 0f)
+            {
+                activated = false;
+                EndLevel();
             }
         }
     }
@@ -304,5 +317,10 @@ public class LevelRunner : MonoBehaviour
     {
         misses += 1;
         missLabel.SetText("Miss: " + misses);
+    }
+
+    public void ReduceHealth(float damage)
+    {
+        health -= damage;
     }
 }
