@@ -105,7 +105,7 @@ public class LevelRunnerV2 : MonoBehaviour
     {
         if (KeybindManager.PressedExit())
         {
-            SceneManager.LoadScene("MainMenu_keybinds_branch");
+            EndLevelEarly();
         }
 
         if (activated)
@@ -128,6 +128,12 @@ public class LevelRunnerV2 : MonoBehaviour
                 Invoke("EndLevel", 2f);
             }
         }
+    }
+
+    // Called when exiting via the exit button or the pause menu
+    public void EndLevelEarly()
+    {
+        SceneManager.LoadScene("MainMenu_keybinds_branch");
     }
 
     void EndLevel()

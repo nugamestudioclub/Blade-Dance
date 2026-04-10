@@ -33,7 +33,7 @@ public class PauseFunctionality : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
-    void UnPause()
+    public void UnPause()
     {
         isPaused = false;
         Time.timeScale = 1;
