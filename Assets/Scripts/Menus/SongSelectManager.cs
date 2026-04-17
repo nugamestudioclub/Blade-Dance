@@ -213,7 +213,8 @@ public class SongSelectManager : MonoBehaviour
         }
 
         selectedLevel = Mathf.Clamp(index, 0, levelCount - 1);
-        float targetX = (levelCount - 1) * (-82.5f) + selectedLevel * 165f;
+        // float targetX = (levelCount - 1) * (-82.5f) + selectedLevel * 165f;
+        float targetX = (levelCount - 1) * (-82.5f) + selectedLevel * 165f + 69f;
         levelSelectTargetPosition = new Vector2(targetX, -300f);
     }
 
@@ -320,7 +321,7 @@ public class SongSelectManager : MonoBehaviour
         {
             menuSection = MenuSection.LevelSelect;
             levelSelectPanel.gameObject.SetActive(true);
-            Vector2 startPosition = new Vector2((track.songs[selectedTrack].levels.Count - 1) * (-82.5f), -300f);
+            Vector2 startPosition = new Vector2((track.songs[selectedTrack].levels.Count - 1) * (-82.5f) + 69f, -300f);
             levelSelectPanel.anchoredPosition = startPosition;
             levelSelectTargetPosition = startPosition;
             SelectLevel(0);
