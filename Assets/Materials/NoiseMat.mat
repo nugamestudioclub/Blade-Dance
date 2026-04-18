@@ -80,7 +80,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradPow: 8
+    - _GradPow: 6.5
     - _Height: 0.25
     - _Metallic: 0
     - _Mode: 0
@@ -99,8 +99,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradA: {r: 1, g: 0, b: 0.88322544, a: 1}
-    - _GradB: {r: 1, g: 0, b: 0, a: 1}
+    - _GradA: {r: 0.4433962, g: 0.017012063, b: 0, a: 1}
+    - _GradB: {r: 0.8018868, g: 0.03933113, b: 0.011347434, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _PixelationScale: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

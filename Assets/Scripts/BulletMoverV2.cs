@@ -19,6 +19,12 @@ public class BulletMoverV2 : MonoBehaviour
 
     private Bounds killBounds;
 
+    public Transform spriteTransform;
+    // the SpriteRenderer of this bullet
+    public SpriteRenderer spriteRender;
+    // the array of sprites to the direction of movement: up, down, left, right
+    public Sprite[] spriteDirections;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,41 +63,62 @@ public class BulletMoverV2 : MonoBehaviour
         this.criticalBeat = setTargetBeat;
         killBounds = bounds;
         ResolveRotation();
+        // RotationSprite();
     }
 
     private void ResolveRotation()
     {
         if (direction == Vector3.down)
         {
-            transform.Rotate(new Vector3(0f, 0f, 0f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 0f));
         }
         else if (direction == Vector3.right)
         {
-            transform.Rotate(new Vector3(0f, 0f, 90f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 90f));
         }
         else if (direction == Vector3.up)
         {
-            transform.Rotate(new Vector3(0f, 0f, 180f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 180f));
         }
         else if (direction == Vector3.left)
         {
-            transform.Rotate(new Vector3(0f, 0f, 270f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 270f));
         }
         else if (direction == (Vector3.down + Vector3.right))
         {
-            transform.Rotate(new Vector3(0f, 0f, 45f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 45f));
         }
         else if (direction == (Vector3.up + Vector3.right))
         {
-            transform.Rotate(new Vector3(0f, 0f, 135f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 135f));
         }
         else if (direction == (Vector3.up + Vector3.left))
         {
-            transform.Rotate(new Vector3(0f, 0f, 225f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 225f));
         }
         else if (direction == (Vector3.down + Vector3.left))
         {
-            transform.Rotate(new Vector3(0f, 0f, 315f));
+            spriteTransform.Rotate(new Vector3(0f, 0f, 315f));
+        }
+    }
+
+    private void RotationSprite()
+    {
+        if (direction == Vector3.up)
+        {
+            spriteRender.sprite = spriteDirections[0];
+        }
+        else if (direction == Vector3.down)
+        {
+            spriteRender.sprite = spriteDirections[1];
+        }
+        else if (direction == Vector3.left)
+        {
+            spriteRender.sprite = spriteDirections[2];
+        }
+        else if (direction == Vector3.right)
+        {
+            spriteRender.sprite = spriteDirections[3];
         }
     }
 

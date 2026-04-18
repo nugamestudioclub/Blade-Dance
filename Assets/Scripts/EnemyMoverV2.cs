@@ -20,6 +20,11 @@ public class EnemyMoverV2 : MonoBehaviour
 
     private Bounds killBounds;
 
+    // the SpriteRenderer of this enemy
+    public SpriteRenderer spriteRender;
+    // the array of sprites to the direction of movement: up, down, left, right
+    public Sprite[] spriteDirections;
+
     //public AudioClip debugSound;
     //private bool debugCheck = false;
 
@@ -27,6 +32,7 @@ public class EnemyMoverV2 : MonoBehaviour
     void Start()
     {
         // levelRunner = GameObject.FindGameObjectWithTag("LevelRunner").GetComponent<LevelRunnerV2>();
+        // spriteRender = GetComponent<SpriteRenderer>();
     }
 
     public void FindRunner()
@@ -61,7 +67,29 @@ public class EnemyMoverV2 : MonoBehaviour
         this.criticalPosition = setTargetPosition;
         this.criticalBeat = setTargetBeat;
         killBounds = bounds;
-        ResolveRotation();
+        // ResolveRotation();
+        // spriteRender = GetComponent<SpriteRenderer>();
+        RotationSprite();
+    }
+
+    private void RotationSprite()
+    {
+        if (direction == Vector3.up)
+        {
+            spriteRender.sprite = spriteDirections[0];
+        }
+        else if (direction == Vector3.down)
+        {
+            spriteRender.sprite = spriteDirections[1];
+        }
+        else if (direction == Vector3.left)
+        {
+            spriteRender.sprite = spriteDirections[2];
+        }
+        else if (direction == Vector3.right)
+        {
+            spriteRender.sprite = spriteDirections[3];
+        }
     }
 
     private void ResolveRotation()
