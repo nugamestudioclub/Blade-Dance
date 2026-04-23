@@ -1,0 +1,915 @@
+song Leia
+bpm 190
+count 8
+notespeed 5
+camerasize 7
+-
+// intro section with weird tempo
+// 1
+1 u
+2 u
+
+3 u -1
+3 d 1
+3 l -1
+3 r 1
+
+4 u -1
+4 d 1
+4 l -1
+4 r 1
+
+5 u -1
+5 d 1
+5 l -1
+5 r 1
+
+// 2
+6.75 d
+7.75 d
+
+8.75 u -1
+8.75 d 1
+8.75 l -1
+8.75 r 1
+
+9.75 u -1
+9.75 d 1
+9.75 l -1
+9.75 r 1
+
+10.75 u -1
+10.75 d 1
+10.75 l -1
+10.75 r 1
+
+11.75 u -1
+11.75 d 1
+11.75 l -1
+11.75 r 1
+
+// 3
+13.25 u
+14.25 u
+
+15.25 u -1
+15.25 d 1
+15.25 l -1
+15.25 r 1
+
+16.25 u -1
+16.25 d 1
+16.25 l -1
+16.25 r 1
+
+17.25 u -1
+17.25 d 1
+17.25 l -1
+17.25 r 1
+
+17.75 r
+
+// 4
+18.75 d
+19.75 d
+
+24 d
+24.5 dr 0
+25 dr 0
+25.5 dr 0
+25.5 r
+
+26 u 1
+26 d -1
+26 r -1
+26 l 1
+
+27 l
+27.5 ul 0
+28 ul 0
+28.5 ul 0
+
+// section repeated sort of
+// 5
+28.75 u
+29.75 u
+
+31 u -1
+31 d 1
+31 l -1
+31 r 1
+
+32 u -1
+32 d 1
+32 l -1
+32 r 1
+
+32 ul 1
+32 dr -1
+32 ur 1
+32 dl -1
+
+33 u -1
+33 d 1
+33 l -1
+33 r 1
+
+34 u -1
+34 d 1
+34 l -1
+34 r 1
+
+34.5 l
+34.5 d 0
+35.125 d
+35.125 r 0
+35.75 r
+
+// 6
+
+37.5 u -1
+37.5 d 1
+37.5 l -1
+37.5 r 1
+
+38 d
+
+39 u -1
+39 d 1
+39 l -1
+39 r 1
+
+39.5 ul 1
+39.5 dr -1
+39.5 ur 1
+39.5 dl -1
+
+40 u -1
+40 d 1
+40 l -1
+40 r 1
+
+41 d
+
+42 u -1
+42 d 1
+42 l -1
+42 r 1
+
+43.2 d
+
+// transition into first verse (note: all the beats from here on are offset by 0.2 for whatever reason)
+44.2 d
+44.7 dl 0
+45.2 l
+45.7 dr 0
+46.2 d
+46.2 r 0
+46.7 dl 0 /////
+47.2 r
+47.7 dr 0
+48.2 d
+49.2 r
+49.2 u 0
+50.2 u
+
+// first vocal section
+// kimi no koe o kikasete
+51.2 l
+51.7 d
+51.7 r 0
+52.2 r
+52.7 d
+
+53.2 u
+
+54.7 d
+54.7 u 1
+54.7 d -1
+
+56.2 l
+57.2 r
+57.7 dr 0
+58.2 dr 0
+58.2 u
+
+59.7 d
+
+60.7 u -1
+60.7 d 1
+60.7 l -1
+60.7 r 1
+
+// yodomu kokoro o haratte
+61.2 r
+61.7 d
+61.7 l 0
+62.2 l
+62.7 d
+
+63.2 u
+
+64.7 d
+64.7 u 1
+64.7 d -1
+
+66.2 r
+67.2 l
+67.7 dl 0
+68.2 dl 0
+68.2 u
+
+69.7 d
+
+70.7 u 1
+70.7 d -1
+70.7 l 1
+70.7 r -1
+// NOT EXHAUSTIVELY TESTED BUT IS MIRROR OF PREVIOUS SECTION WHICH IS TESTED
+
+// itsuwari no kyanbasu o
+71.2 l
+71.7 d
+71.7 r 0
+72.2 r
+72.7 d
+
+73.2 u
+
+74.7 d
+74.7 u 1
+74.7 d -1
+
+76.2 l
+77.2 r
+77.7 dr 0
+78.2 dr 0
+78.2 u
+
+79.7 d
+
+// nuritsubushiteku nda 
+81.2 r
+81.7 u 1
+81.7 u -1
+82.2 u
+82.7 l 1
+82.7 l -1
+
+83.2 l
+83.7 ur 0
+84.2 ur 0
+84.7 ur 0
+84.7 u
+
+86.2 l
+86.7 d 1
+86.7 d -1
+87.2 d
+87.7 r 1
+87.7 r -1
+
+88.2 r
+88.7 dl 0
+89.2 dl 0
+89.7 dl 0
+89.7 d
+// TESTED
+
+// kyou mou...
+90.2 u 1
+90.7 d -1
+91.2 u
+91.7 l 0
+93.2 d
+
+// bridge
+93.7 ul 0
+94.2 ul 0
+94.7 ul 0
+
+94.7 l
+95.2 u 0
+95.7 u 0
+
+96.2 r
+96.7 d -1
+
+96.7 dr 0
+97.2 dr 0
+97.7 dr 0
+
+97.7 u
+98.2 d 1
+
+98.2 ur 0
+98.7 ur 0
+99.2 ur 0
+
+99.2 l
+99.7 d 0
+100.2 d 0
+
+100.7 r
+
+101.7 r -1
+102.2 d
+102.2 d -1
+103.2 l
+
+// shuumatsu no nai gensou ni
+104.2 r
+
+105.7 u
+
+106.2 l 1
+
+107.2 d
+107.7 ul 0
+108.2 ul 0
+108.2 l
+108.7 ul 0
+109.2 d 
+
+109.7 u 1
+110.2 r
+
+110.7 dr 0
+111.2 dr 0
+111.2 r 1
+111.7 dr 0
+
+111.7 u
+
+112.2 u 1
+112.2 dr 0
+112.7 dr 0
+113.2 dr 0
+// must hold right while pressing up
+113.2 u
+
+// sawareta ki ga shita
+115.2 l
+
+116.7 d
+
+117.2 r 1
+
+118.2 u
+118.7 dr 0
+119.2 dr 0
+119.2 r
+119.7 dr 0
+120.2 u
+
+120.7 d 1
+121.2 l
+
+121.7 ul 0
+122.2 ul 0
+122.2 l 1
+122.7 ul 0
+
+123.2 d
+123.7 r -1
+
+124.2 d
+
+125.2 u -1
+125.2 d 1
+125.2 l -1
+125.2 r 1
+
+// nante yobeba ii ndarou
+126.2 u
+
+127.2 l 1
+127.2 l -1
+
+127.7 r
+128.2 u 0
+
+129.2 u
+129.7 ul 0
+130.2 l
+130.7 dl 0
+131.2 d
+
+132.2 u
+132.7 ur 0
+133.2 ur 0
+133.7 ur 0
+133.7 l
+135.2 r
+
+136.2 u 1
+136.2 d -1
+
+//136.2 l
+//136.7 d
+// TESTED
+
+// kawaranai ondo
+137.2 d
+
+138.2 r 1
+138.2 r -1
+
+138.7 l
+139.2 d 0
+
+140.2 d
+140.7 dr 0
+141.2 r
+141.7 ur 0
+142.2 u
+
+142.7 dr 0
+143.2 dr 0
+
+143.2 r
+
+143.7 d 0
+144.2 d 0
+
+145.2 l
+146.2 r
+
+147.2 d
+147.7 ul 0
+147.7 l
+// TESTED (KINDA)
+
+// hohoemi ga naizou o
+148.2 r
+
+149.7 d
+
+150.2 l 1
+
+151.2 u
+151.7 dl 0
+152.2 dl 0
+152.2 l
+152.7 dl 0
+153.2 u
+
+153.7 d 1
+154.2 r
+
+154.7 ur 0
+155.2 ur 0
+155.2 r 1
+155.7 ur 0
+
+155.7 d
+
+156.2 d 1
+156.2 ur 0
+156.7 ur 0
+157.2 ur 0
+157.2 d
+// NOT EXHAUSTIVELY TESTED BUT IS MIRROR OF PREVIOUS SECTION WHICH IS TESTED
+
+// kuitsubusu mae ni
+159.2 l
+
+160.7 u
+
+161.2 r 1
+
+162.2 d
+162.7 ur 0
+163.2 ur 0
+163.2 r
+163.7 ur 0
+164.2 d
+
+164.7 u 1
+165.2 l
+
+165.7 dl 0
+166.2 dl 0
+166.2 l 1
+166.7 dl 0
+
+167.2 u
+167.7 r -1
+
+168.2 u
+
+169.2 u 1
+169.2 d -1
+169.2 l 1
+169.2 r -1
+// NOT EXHAUSTIVELY TESTED BUT IS MIRROR OF PREVIOUS SECTION WHICH IS TESTED
+
+// kyou o tojikometa yo
+170.2 u
+
+171.2 r 1
+171.2 r -1
+
+171.7 l
+172.2 u 0
+
+173.2 u
+173.7 ur 0
+174.2 r
+174.7 dr 0
+175.2 d
+
+176.2 u
+176.7 ul 0
+177.2 ul 0
+177.7 ul 0
+177.7 r
+179.2 l
+
+179.7 r
+180.2 l
+
+180.2 l 1
+180.2 l -1
+180.2 r 1
+180.2 r -1
+
+// NOT EXHAUSTIVELY TESTED BUT IS MIRROR OF PREVIOUS SECTION WHICH IS TESTED
+
+// haseru mirai wa haiiro...
+181.2 d
+
+182.2 l -1
+182.2 l 1
+
+182.7 r
+183.7 d 1
+
+184.2 l
+
+185.2 u -1
+185.2 d 1
+185.2 l -1
+185.2 r 1
+
+186.2 r
+
+186.7 u 0
+187.2 u
+187.7 dr 0
+188.2 dr 0
+188.2 r
+189.2 l
+189.7 u 1
+
+190.2 u
+191.2 l
+192.2 d
+193.2 r
+
+// bridge to chorus
+// nozomu nara kuusou
+196.2 u -1
+196.2 d 1
+196.2 l -1
+196.2 r 1
+
+199.2 l
+
+200.7 u
+
+202.2 r 1
+202.2 r -1
+
+202.2 l
+203.2 r
+204.2 l
+
+205.2 d
+
+205.7 ur 0
+206.2 ur 0
+
+206.7 r
+
+208.2 u 1
+208.2 d -1
+208.2 l 1
+208.2 r -1
+// TESTED
+
+// sabireta uso...
+210.2 r
+211.2 u
+
+212.7 l
+
+214.2 d 1
+214.2 d -1
+
+214.2 u
+
+216.2 r
+217.2 d
+
+// kanau nara motto
+217.7 l 1
+218.2 u 1
+218.7 r -1
+219.2 d -1
+219.7 l 1
+220.2 u 1
+220.7 r -1
+221.2 d -1
+221.7 l 1
+222.2 u 1
+
+222.7 r -1
+223.2 d -1
+
+223.2 d
+
+223.7 l 1
+
+224.2 u 1
+224.7 r -1
+
+224.7 r
+
+225.2 d -1
+225.7 l 1
+226.2 u 1
+
+// here you need to go in a circle without touching the center (left -> up -> right -> down -> left -> up -> right)
+// idk this might be too hard for someone to figure out on their own
+// it is possible though
+226.2 l
+
+226.7 r -1
+226.7 dr 0
+227.2 d -1
+
+227.2 r
+
+227.7 l 1
+227.7 dl 0
+228.2 u 1
+
+228.2 l
+
+228.7 r -1
+226.7 dr 0
+229.2 d -1
+
+229.2 r
+230.2 u 1
+230.7 d
+
+232.2 l -1
+232.7 d 1
+233.2 r 1
+233.7 u -1
+// TESTED (kinda)
+
+// kikasete
+234.2 u
+
+234.2 l -1
+234.7 ul 0
+
+235.2 r
+236.2 d 1
+236.7 l
+
+238.2 d
+// TESTED
+
+// back to the chorus
+// yes I literally just copy-pasted the map I made for the first chorus
+// kokoro kara afureteta
+239.2 l
+239.7 d
+239.7 r 0
+240.2 r
+240.7 d
+
+241.2 u
+
+242.7 d
+242.7 u 1
+242.7 d -1
+
+244.2 l
+245.2 r
+245.7 dr 0
+246.2 dr 0
+246.2 u
+
+247.7 d
+
+248.7 u -1
+248.7 d 1
+248.7 l -1
+248.7 r 1
+
+// itoshisa o chiribamete
+249.2 r
+249.7 d
+249.7 l 0
+250.2 l
+250.7 d
+
+251.2 u
+
+252.7 d
+252.7 u 1
+252.7 d -1
+
+254.2 r
+255.2 l
+255.7 dl 0
+256.2 dl 0
+256.2 u
+
+257.7 d
+
+258.7 u 1
+258.7 d -1
+258.7 l 1
+258.7 r -1
+
+// kimi no koe ni kasaneta
+259.2 l
+259.7 d
+259.7 r 0
+260.2 r
+260.7 d
+
+261.2 u
+
+262.7 d
+262.7 u 1
+262.7 d -1
+
+264.2 l
+265.2 r
+265.7 dr 0
+266.2 dr 0
+266.2 u
+
+267.7 d
+
+// koukotsu wa haruka
+269.2 r
+269.7 u 1
+269.7 u -1
+270.2 u
+270.7 l 1
+270.7 l -1
+
+271.2 l
+271.7 ur 0
+272.2 ur 0
+272.7 ur 0
+272.7 u
+
+274.2 l
+274.7 d 1
+274.7 d -1
+275.2 d
+275.7 r 1
+275.7 r -1
+
+276.2 r
+276.7 dl 0
+277.2 dl 0
+277.7 dl 0
+277.7 d
+// NOT EXHAUSTIVELY TESTED BUT LITERALLY IDENTICAL TO FIRST PART
+
+// katachi aru mono naraba
+279.2 r
+279.7 u
+279.7 l 0
+280.2 l
+280.7 u
+
+281.2 d
+
+282.7 u
+282.7 d 1
+282.7 u -1
+
+284.2 r
+285.2 l
+285.7 ul 0
+286.2 ul 0
+286.2 d
+
+287.7 u
+
+288.7 d -1
+288.7 u 1
+288.7 r -1
+288.7 l 1
+
+// kuzure yuku mono naraba
+289.2 l
+289.7 u
+289.7 r 0
+290.2 r
+290.7 u
+
+291.2 d
+
+292.7 u
+292.7 d 1
+292.7 u -1
+
+294.2 l
+295.2 r
+295.7 ur 0
+296.2 ur 0
+296.2 d
+
+297.7 u
+
+298.7 d 1
+298.7 u -1
+298.7 r 1
+298.7 l -1
+
+// kono ryoume wa iranai
+299.2 r
+299.7 u
+299.7 l 0
+300.2 l
+300.7 u
+
+301.2 d
+
+302.7 u
+302.7 d 1
+302.7 u -1
+
+304.2 r
+305.2 l
+305.7 ul 0
+306.2 ul 0
+306.2 d
+
+307.7 u
+// NOT EXHAUSTIVELY TESTED BUT MIRRORS PREVIOUS SECTION SO SHOULD BE POSSIBLE
+
+// boku o tsutsunde
+309.2 l
+309.7 d 1
+309.7 d -1
+310.2 d
+310.7 r 1
+310.7 r -1
+
+311.2 r
+311.7 dl 0
+312.2 dl 0
+312.7 dl 0
+312.7 d
+
+314.2 r
+314.7 u 1
+314.7 u -1
+315.2 u
+
+316.2 d
+
+316.7 r 0
+316.7 l 0
+317.2 r 0
+317.2 l 0
+317.7 r 0
+317.7 l 0
+318.2 r 0
+318.2 l 0
+318.7 r 0
+318.7 l 0
+
+// LEIA...
+319.2 u
+
+319.7 r 0
+319.7 l 0
+320.2 r 0
+320.2 l 0
+320.7 r 0
+320.7 l 0
+
+321.2 d
+
+327.2 u 1
+327.2 d -1
+327.2 l 1
+327.2 r -1
+327.2 u -1
+327.2 d 1
+327.2 l -1
+327.2 r 1
