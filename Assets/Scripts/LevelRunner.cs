@@ -8,7 +8,10 @@ public class LevelRunner : MonoBehaviour
 {
     private int hits = 0;
     private int misses = 0;
-    private float health = 1.0f;
+    
+    private float maxHealth = 1.0f;
+    private float currentHealth;
+    public HealthBar healthBar;
 
     public TMP_Text hitLabel;
     public TMP_Text missLabel;
@@ -73,6 +76,9 @@ public class LevelRunner : MonoBehaviour
             missLabel = missLabelHolder;
         }
 
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        
         musicSource = GetComponent<AudioSource>();
 
         secPerBeat = 60f / songBpm;
@@ -115,12 +121,14 @@ public class LevelRunner : MonoBehaviour
                 Invoke("EndLevel", timeDelayToFinish);
             }
 
-            if (health < 1.0f)
+            if (currentHealth < maxHealth)
             {
-                health += Time.deltaTime * 0.3f;
+                currentHealth += Time.deltaTime * 0.2f;
+                currentHealth = Mathf.Min(currentHealth, 1.0f);
+                healthBar.SetHealth(currentHealth);
             }
 
-            if (health <= 0f)
+            if (currentHealth <= 0f)
             {
                 activated = false;
                 EndLevel();
@@ -321,6 +329,7 @@ public class LevelRunner : MonoBehaviour
 
     public void ReduceHealth(float damage)
     {
-        health -= damage;
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
