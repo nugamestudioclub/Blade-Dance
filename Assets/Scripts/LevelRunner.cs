@@ -54,7 +54,6 @@ public class LevelRunner : MonoBehaviour
 
     public GameObject endScreen;
 
-    // Start is called before the first frame update
     public void LaunchRunner(List<Note> content)
     {
         if (content.Count < 1)
@@ -103,15 +102,14 @@ public class LevelRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (KeybindManager.PressedExit())
         {
             SceneManager.LoadScene("MainMenu");
         }
 
         if (activated)
         {
-            secondPosition = (float)(AudioSettings.dspTime - startDspTime);
+            secondPosition = (float)(AudioSettings.dspTime - startDspTime); // Tracks time since start. Second as in seconds, not 2nd.
             beatPosition = secondPosition / secPerBeat;
             levelContent.AtBeat(beatPosition - beatsDelay);
 

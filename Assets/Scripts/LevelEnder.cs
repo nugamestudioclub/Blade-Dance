@@ -68,7 +68,7 @@ public class LevelEnder : MonoBehaviour
 
         if (selection == EndMenuSelect.Retry)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (KeybindManager.PressedRight())
             {
                 selectorTarget = continueButton.anchoredPosition;
                 selection = EndMenuSelect.Continue;
@@ -80,26 +80,26 @@ public class LevelEnder : MonoBehaviour
         }
         else if (selection == EndMenuSelect.Continue)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (KeybindManager.PressedLeft())
             {
                 selectorTarget = replayButton.anchoredPosition;
                 selection = EndMenuSelect.Retry;
             }
             else if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("MainMenu_keybinds_branch");
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (KeybindManager.PressedLeft())
             {
                 selector.gameObject.SetActive(true);
                 selector.anchoredPosition = replayButton.anchoredPosition;
                 selectorTarget = selector.anchoredPosition;
                 selection = EndMenuSelect.Retry;
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (KeybindManager.PressedRight())
             {
                 selector.gameObject.SetActive(true);
                 selector.anchoredPosition = continueButton.anchoredPosition;
