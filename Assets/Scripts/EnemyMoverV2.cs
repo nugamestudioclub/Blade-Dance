@@ -116,6 +116,7 @@ public class EnemyMoverV2 : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(missSFX, Camera.main.transform.position, 1.0f);
         levelRunner.AddMiss();
+        levelRunner.ReduceHealth(0.2f);
         Destroy(gameObject);
     }
 

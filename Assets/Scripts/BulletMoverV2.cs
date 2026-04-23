@@ -132,6 +132,7 @@ public class BulletMoverV2 : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, 1.0f);
         levelRunner.AddMiss(this);
+        levelRunner.ReduceHealth(0.1f);
         Destroy(gameObject);
     }
 }
