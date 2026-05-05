@@ -97,4 +97,9 @@ public class LevelLoadedV2
     {
         return finishedAtBeat;
     }
+
+    public int GetTotalNoteCount()
+    {
+        return content.Count;
+    }
 }

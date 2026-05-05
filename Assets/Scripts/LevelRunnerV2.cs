@@ -160,7 +160,7 @@ public class LevelRunnerV2 : MonoBehaviour
     {
         musicSource.Stop();
         endScreen.SetActive(true);
-        endScreen.GetComponent<LevelEnder>().Populate(hits, hits + misses);
+        endScreen.GetComponent<LevelEnder>().Populate(hits, levelContent.GetTotalNoteCount());
     }
 
     public void AddEnemy(Enemy nextEnemy)

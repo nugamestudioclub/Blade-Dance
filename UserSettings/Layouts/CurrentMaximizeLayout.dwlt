@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 7466
+  controlID: 7857
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 7467
+  controlID: 7858
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7468
+  controlID: 7859
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a6650000
+      m_SelectedIDs: ea160000
       m_LastClickedID: 0
       m_ExpandedIDs: 42defdff02f3fdff78f3fdff0af4fdffb0f4fdff46f5fdff983dfeff72c5feff5ec6feff8ee9feff0c49ffff804fffffceaeffff86c1ffffbcf8ffff78faffff3cba0000bcef000002f2000070f40000b4f60000
       m_RenameOverlay:
@@ -809,7 +809,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -817,15 +817,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 76
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 76
   m_LastProjectPath: /Users/christianfitzpatrick/Documents/GitHub/Blade-Dance
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 99}
-    m_SelectedIDs: 68650000
-    m_LastClickedID: 25960
+    m_SelectedIDs: 6a650000
+    m_LastClickedID: 25962
     m_ExpandedIDs: 000000004e65000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -879,9 +879,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a6650000
-    m_LastClickedInstanceID: 26022
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: ea160000
+    m_LastClickedInstanceID: 5866
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000c6af0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
